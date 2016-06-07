@@ -1,0 +1,39 @@
+path {
+  fill: none;
+  stroke-linejoin : round;
+}
+
+.sphere,
+.graticule {
+  stroke: blue;
+  fill: white;
+  stroke-width : 2px;
+}
+
+.equator {
+  stroke: blue;
+  stroke-width: 2px;
+}
+
+.title {
+  text-anchor: middle ; 
+  font-size: 50px ; 
+  fill : blue ;
+  stroke: black ;
+  
+}
+
+.ligne {
+  stroke: #aaa ;
+  stroke-width: 3px ;
+}
+
+.title2 {
+  font-size: 40px ; 
+  fill : black ;
+}
+
+.sousTitre {
+  font-size: 20px ;
+  fill : black ;
+}
