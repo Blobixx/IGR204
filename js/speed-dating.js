@@ -19,7 +19,7 @@ var path = d3.geo.path()
 
 var graticule = d3.geo.graticule();
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#tab-1").append("svg")
     .attr("width", width+ margin.left + margin.right)
     .attr("height", height+ margin.top + margin.bottom);
     
@@ -32,13 +32,7 @@ var circle = svg.append("circle")
                 .attr("cy",3*(height/4))
 		        .attr("r", 180)
                 .attr("fill", "white") ;
-   
-// Définition du titre 
-svg.append("text") 
-	.attr("x", (width / 2)) 
-	.attr("y",40) 
-	.attr("class", "title")
-	.text("Speed-Dating through globe");
+
 
 // Définition de la sphere
 svg.append("path")

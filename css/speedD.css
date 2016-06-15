@@ -18,9 +18,8 @@ path {
 .title {
   text-anchor: middle ; 
   font-size: 50px ; 
-  fill : blue ;
-  stroke: black ;
-  
+  color: blue;
+  text-align: center;
 }
 
 .ligne {
