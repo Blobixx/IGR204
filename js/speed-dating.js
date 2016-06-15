@@ -31,7 +31,7 @@ var circle = svg.append("circle")
                 .attr("cx", 3*(width / 4)+3*margin.left)
                 .attr("cy",3*(height/4))
 		        .attr("r", 180)
-		        .attr("fill", "blue");
+                .attr("fill", "white") ;
    
 // Définition du titre 
 svg.append("text") 
@@ -89,22 +89,28 @@ svg.append("text")
 	.text("Profil from the user") ;
 
 // Toutes les informations du profil
-svg.append("text").attr("x", 570).attr("y",150).attr("class", "sousTitre").text("Gender :") ;
+svg.append("text").attr("x", 570).attr("y",150).attr("class", "sousTitre").text("Gender :")
+    .on("mouseover", function() {circle.attr("fill", "blue")}) ;
     
-svg.append("text").attr("x", 570).attr("y",180).attr("class", "sousTitre").text("Age :") ;
+svg.append("text").attr("x", 570).attr("y",180).attr("class", "sousTitre").text("Age :")
+    .on("mouseover", function() {circle.attr("fill", "red")}) ;
 
-svg.append("text").attr("x", 570).attr("y",210).attr("class", "sousTitre").text("Principal interest :") ;
+svg.append("text").attr("x", 570).attr("y",210).attr("class", "sousTitre").text("Principal interest :")
+    .on("mouseover", function() {circle.attr("fill", "green")}) ;
 
-svg.append("text").attr("x", 570).attr("y",240).attr("class", "sousTitre").text("Race :") ;
+svg.append("text").attr("x", 570).attr("y",240).attr("class", "sousTitre").text("Race :")
+    .on("mouseover", function() {circle.attr("fill", "yellow")}) ;
 
-svg.append("text").attr("x", 570).attr("y",270).attr("class", "sousTitre").text("Race Impact :") ;
+svg.append("text").attr("x", 570).attr("y",270).attr("class", "sousTitre").text("Race Impact :")
+    .on("mouseover", function() {circle.attr("fill", "pink")}) ;
 
-svg.append("text").attr("x", 570).attr("y",300).attr("class", "sousTitre").text("Goal :") ;
+svg.append("text").attr("x", 570).attr("y",300).attr("class", "sousTitre").text("Goal :")
+    .on("mouseover", function() {circle.attr("fill", "gold")}) ;
 
-svg.append("text").attr("x", 570).attr("y",330).attr("class", "sousTitre").text("Date frequency :") ;
+svg.append("text").attr("x", 570).attr("y",330).attr("class", "sousTitre").text("Date frequency :")
+    .on("mouseover", function() {circle.attr("fill", "yellow")}) ;
 
-svg.append("text").attr("x", 570).attr("y",360).attr("class", "sousTitre").text("Go out frequency :") ;
+svg.append("text").attr("x", 570).attr("y",360).attr("class", "sousTitre").text("Go out frequency :")
+    .on("mouseover", function() {circle.attr("fill", "black")}) ;
 
-// Création du pie des données globales
-pie.append("path").attr("d",arc);
 
