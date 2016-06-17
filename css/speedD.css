@@ -16,8 +16,8 @@ path {
 }
 
 .title {
-  text-anchor: middle ; 
-  font-size: 50px ; 
+  text-anchor: middle ;
+  font-size: 50px ;
   color: blue;
   text-align: center;
 }
@@ -27,8 +27,13 @@ path {
   stroke-width: 3px ;
 }
 
+.ligneTableau {
+  stroke: #000 ;
+  stroke-width: 3px ;
+}
+
 .title2 {
-  font-size: 40px ; 
+  font-size: 40px ;
   fill : black ;
 }
 

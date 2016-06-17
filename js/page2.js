@@ -24,7 +24,7 @@ var path = d3.geo.path()
 
 var graticule = d3.geo.graticule();
 
-var svg = d3.select("#tab-1").append("svg")
+var svg = d3.select("#tab-2").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom);
 
@@ -73,7 +73,6 @@ svg.append("path")
     .attr("class", "equator")
     .attr("d", path);
 
-var feature = svg.selectAll("path");
 
 //Intéractions sur la sphère : zoom + rotation
 var zoom = d3.geo.zoom()
@@ -87,63 +86,95 @@ d3.selectAll('path')
     .call(zoom);
 
 // Changer de page
-svg.append("text")
+/*svg.append("text")
     .attr("x", (width / 4) - 2 * margin.left)
     .attr("y", height - 20)
     .attr("class", "title2")
-    .text("Show Waves");
+    .text("Show Waves");*/
 
 // idd de l'utilisateur
-svg.append("text")
+/*svg.append("text")
     .attr("x", (width / 4) - 2 * margin.left)
     .attr("y", 100)
     .attr("class", "sousTitre")
-    .text("Idd from the user : ");
+    .text("Idd from the user : ");*/
 
 // Afficher le profil
 svg.append("text")
     .attr("x", 3 * (width / 4) - 2 * margin.left)
     .attr("y", 100)
     .attr("class", "title2")
-    .text("Profil from the user");
+    .text("Wave");
 
 // Toutes les informations du profil
-svg.append("text").attr("x", 570).attr("y", 150).attr("class", "sousTitre").text("Gender :")
+svg.append("text").attr("x", 570).attr("y", 150).attr("class", "sousTitre").text("Match_es :")
     .on("mouseover", function() {
         circle.attr("fill", "blue")
     });
 
-svg.append("text").attr("x", 570).attr("y", 180).attr("class", "sousTitre").text("Age :")
+svg.append("text").attr("x", 570).attr("y", 180).attr("class", "sousTitre").text("Id :")
     .on("mouseover", function() {
         circle.attr("fill", "red")
     });
 
-svg.append("text").attr("x", 570).attr("y", 210).attr("class", "sousTitre").text("Principal interest :")
+svg.append("text").attr("x", 570).attr("y", 210).attr("class", "sousTitre").text("Choice :")
     .on("mouseover", function() {
         circle.attr("fill", "green")
     });
 
-svg.append("text").attr("x", 570).attr("y", 240).attr("class", "sousTitre").text("Race :")
+svg.append("text").attr("x", 570).attr("y", 240).attr("class", "sousTitre").text("Round :")
     .on("mouseover", function() {
         circle.attr("fill", "yellow")
     });
 
-svg.append("text").attr("x", 570).attr("y", 270).attr("class", "sousTitre").text("Race Impact :")
+svg.append("text").attr("x", 570).attr("y", 270).attr("class", "sousTitre").text("Mode :")
     .on("mouseover", function() {
         circle.attr("fill", "pink")
     });
 
-svg.append("text").attr("x", 570).attr("y", 300).attr("class", "sousTitre").text("Goal :")
-    .on("mouseover", function() {
-        circle.attr("fill", "gold")
-    });
+//vertical gauche
+svg.append('line')
+        .attr({
+            x1: 600,
+            y1: 450,
+            x2: 600,
+            y2: 630
+        })
+        .attr("class", "ligneTableau");
+//vertical droite
+svg.append('line')
+        .attr({
+            x1: 900,
+            y1: 450,
+            x2: 900,
+            y2: 630
+        })
+        .attr("class", "ligneTableau");
 
-svg.append("text").attr("x", 570).attr("y", 330).attr("class", "sousTitre").text("Date frequency :")
-    .on("mouseover", function() {
-        circle.attr("fill", "yellow")
-    });
+//vertical milieu
+svg.append('line')
+        .attr({
+            x1: 750,
+            y1: 450,
+            x2: 750,
+            y2: 630
+        })
+        .attr("class", "ligneTableau");
 
-svg.append("text").attr("x", 570).attr("y", 360).attr("class", "sousTitre").text("Go out frequency :")
-    .on("mouseover", function() {
-        circle.attr("fill", "black")
-    });
+svg.append('line')
+        .attr({
+            x1: 600,
+            y1: 450,
+            x2: 900,
+            y2: 450
+        })
+        .attr("class", "ligneTableau");
+
+svg.append('line')
+        .attr({
+            x1: 600,
+            y1: 630,
+            x2: 900,
+            y2: 630
+        })
+        .attr("class", "ligneTableau");
