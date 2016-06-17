@@ -86,7 +86,7 @@ var zoom = d3.geo.zoom()
 d3.selectAll('path')
     .call(zoom);
 
-// Changer de page 
+// Changer de page
 svg.append("text")
     .attr("x", (width / 4) - 2 * margin.left)
     .attr("y", height - 20)
@@ -100,7 +100,7 @@ svg.append("text")
     .attr("class", "sousTitre")
     .text("Idd from the user : ");
 
-// Afficher le profil 
+// Afficher le profil
 svg.append("text")
     .attr("x", 3 * (width / 4) - 2 * margin.left)
     .attr("y", 100)
