@@ -110,40 +110,56 @@ svg.append("text")
 // Toutes les informations du profil
 svg.append("text").attr("x", 570).attr("y", 150).attr("class", "sousTitre").text("Gender :")
     .on("mouseover", function() {
-        circle.attr("fill", "blue")
+        circle.attr("fill", "blue")})
+    .on("mouseout", function() {
+        circle.attr("fill", "white")
     });
 
 svg.append("text").attr("x", 570).attr("y", 180).attr("class", "sousTitre").text("Age :")
     .on("mouseover", function() {
-        circle.attr("fill", "red")
+        circle.attr("fill", "red")})
+    .on("mouseout", function() {
+        circle.attr("fill", "white")
     });
 
 svg.append("text").attr("x", 570).attr("y", 210).attr("class", "sousTitre").text("Principal interest :")
     .on("mouseover", function() {
-        circle.attr("fill", "green")
+        circle.attr("fill", "green")})
+    .on("mouseout", function() {
+        circle.attr("fill", "white")
     });
 
 svg.append("text").attr("x", 570).attr("y", 240).attr("class", "sousTitre").text("Race :")
     .on("mouseover", function() {
-        circle.attr("fill", "yellow")
+        circle.attr("fill", "yellow")})
+    .on("mouseout", function() {
+        circle.attr("fill", "white")
     });
 
 svg.append("text").attr("x", 570).attr("y", 270).attr("class", "sousTitre").text("Race Impact :")
     .on("mouseover", function() {
-        circle.attr("fill", "pink")
+        circle.attr("fill", "pink")})
+    .on("mouseout", function() {
+        circle.attr("fill", "white")
     });
 
 svg.append("text").attr("x", 570).attr("y", 300).attr("class", "sousTitre").text("Goal :")
     .on("mouseover", function() {
-        circle.attr("fill", "gold")
+        circle.attr("fill", "gold")})
+    .on("mouseout", function() {
+        circle.attr("fill", "white")
     });
 
 svg.append("text").attr("x", 570).attr("y", 330).attr("class", "sousTitre").text("Date frequency :")
     .on("mouseover", function() {
-        circle.attr("fill", "yellow")
+        circle.attr("fill", "yellow")})
+    .on("mouseout", function() {
+        circle.attr("fill", "white")
     });
 
 svg.append("text").attr("x", 570).attr("y", 360).attr("class", "sousTitre").text("Go out frequency :")
     .on("mouseover", function() {
-        circle.attr("fill", "black")
+        circle.attr("fill", "black") })
+    .on("mouseout", function() {
+        circle.attr("fill", "white")
     });
