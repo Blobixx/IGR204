@@ -1,6 +1,7 @@
-Gender Pie :
-Age Pie :
-Principal interest :
+Gender Pie : filles : 49 , mecs : 51
+
+Age Pie : 65% entre 20 et 25 , 17% entre 25 et 30, 15% entre 30 et 35, 3% others
+
 Race :
 Race impact :
 Goal :
