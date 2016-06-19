@@ -2,15 +2,15 @@
 var margin = {
     right: 50,
     left: 50,
-    top: 100,
-    bottom: 100
+    top: 150,
+    bottom: 150
 }
-/*width = 1000 + margin.left + margin.right,
+/*width = 1500 + margin.left + margin.right,
     height = 500 + margin.top + margin.bottom,
     rotate = [10, -10],
     velocity = [.003, -.001],
     time = Date.now(),
-    r = 100,
+    r = 150,
     p = Math.PI * 2;*/
 
 var projection = d3.geo.orthographic()
@@ -31,7 +31,7 @@ var svg = d3.select("#tab-3").append("svg")
 var ligne = svg.append('line')
     .attr({
         x1: 550,
-        y1: 100,
+        y1: 150,
         x2: 550,
         y2: 700
     })
@@ -40,7 +40,7 @@ var ligne = svg.append('line')
 var circle = svg.append("circle")
     .attr("cx", 3 * (width / 4) + 3 * margin.left)
     .attr("cy", 3 * (height / 4))
-    .attr("r", 180)
+    .attr("r", 150)
     .attr("fill", "white");
 
 
@@ -63,11 +63,11 @@ svg.append("path")
     .datum({
         type: "LineString",
         coordinates: [
-            [-180, 0],
+            [-150, 0],
             [-90, 0],
             [0, 0],
             [90, 0],
-            [180, 0]
+            [150, 0]
         ]
     })
     .attr("class", "equator")
@@ -95,41 +95,276 @@ d3.selectAll('path')
 // idd de l'utilisateur
 /*svg.append("text")
     .attr("x", (width / 4) - 2 * margin.left)
-    .attr("y", 100)
+    .attr("y", 150)
     .attr("class", "sousTitre")
     .text("Idd from the user : ");*/
 
 // Afficher le profil
 svg.append("text")
     .attr("x", 3 * (width / 4) - 2 * margin.left)
-    .attr("y", 100)
+    .attr("y", 150)
     .attr("class", "title2")
     .text("Informations");
 
 // Toutes les informations du profil
-svg.append("text").attr("x", 570).attr("y", 150).attr("class", "sousTitre").text("Partner :")
-    .on("mouseover", function() {
-        circle.attr("fill", "blue")
-    });
+svg.append("text").attr("x", 570).attr("y", 200).attr("class", "sousTitre").text("Partner :");
 
-svg.append("text").attr("x", 570).attr("y", 180).attr("class", "sousTitre").text("Position :")
-    .on("mouseover", function() {
-        circle.attr("fill", "red")
-    });
+svg.append("text").attr("x", 570).attr("y", 570).attr("class", "sousTitre").text("Position :");
+svg.append("text").attr("x", 570).attr("y", 600).attr("class", "sousTitre").text("Order :");
+svg.append("text").attr("x", 570).attr("y", 630).attr("class", "sousTitre").text("Match :");
+svg.append("text").attr("x", 570).attr("y", 660).attr("class", "sousTitre").text("Correlation :");
+svg.append("text").attr("x", 570).attr("y", 690).attr("class", "sousTitre").text("Same race :");
 
-svg.append("text").attr("x", 570).attr("y", 210).attr("class", "sousTitre").text("Order :")
-    .on("mouseover", function() {
-        circle.attr("fill", "green")
-    });
+svg.append('line')
+        .attr({
+            x1: 730,
+            y1: 170,
+            x2: 1130,
+            y2: 170
+        })
+        .attr("class", "ligneTableau");
 
-svg.append("text").attr("x", 570).attr("y", 240).attr("class", "sousTitre").text("Match :")
-    .on("mouseover", function() {
-        circle.attr("fill", "yellow")
-    });
+svg.append('line')
+        .attr({
+            x1: 730,
+            y1: 220,
+            x2: 1130,
+            y2: 220
+        })
+        .attr("class", "ligneTableau");
 
-svg.append("text").attr("x", 570).attr("y", 270).attr("class", "sousTitre").text("Correlation :")
-    .on("mouseover", function() {
-        circle.attr("fill", "pink")
-    });
+svg.append('line')
+        .attr({
+            x1: 730,
+            y1: 170,
+            x2: 730,
+            y2: 220
+        })
+        .attr("class", "ligneTableau");
 
-svg.append("text").attr("x", 570).attr("y", 300).attr("class", "sousTitre").text("Correlation :");
+svg.append('line')
+        .attr({
+            x1: 830,
+            y1: 170,
+            x2: 830,
+            y2: 220
+        })
+        .attr("class", "ligneTableau");
+
+svg.append('line')
+        .attr({
+            x1: 930,
+            y1: 170,
+            x2: 930,
+            y2: 220
+        })
+        .attr("class", "ligneTableau");
+
+svg.append('line')
+        .attr({
+            x1: 1030,
+            y1: 170,
+            x2: 1030,
+            y2: 220
+        })
+        .attr("class", "ligneTableau");
+
+svg.append('line')
+        .attr({
+            x1: 1130,
+            y1: 170,
+            x2: 1130,
+            y2: 220
+        })
+        .attr("class", "ligneTableau");
+
+svg.append("text").attr("x", 570).attr("y", 310).attr("class", "sousTitre").text("Préférence");
+svg.append("text").attr("x", 570).attr("y", 350).attr("class", "sousTitre").text("Note");
+svg.append("text").attr("x", 570).attr("y", 460).attr("class", "sousTitre").text("Préférence");
+svg.append("text").attr("x", 570).attr("y", 510).attr("class", "sousTitre").text("Note");
+
+svg.append('line')
+        .attr({
+            x1: 730,
+            y1: 280,
+            x2: 1120,
+            y2: 280
+        })
+        .attr("class", "ligneTableau");
+
+svg.append('line')
+        .attr({
+            x1: 730,
+            y1: 380,
+            x2: 1120,
+            y2: 380
+        })
+        .attr("class", "ligneTableau");
+svg.append('line')
+        .attr({
+            x1: 730,
+            y1: 330,
+            x2: 1120,
+            y2: 330
+        })
+        .attr("class", "ligneTableau");
+
+svg.append('line')
+        .attr({
+            x1: 730,
+            y1: 280,
+            x2: 730,
+            y2: 380
+        })
+        .attr("class", "ligneTableau");
+
+svg.append('line')
+        .attr({
+            x1: 795,
+            y1: 280,
+            x2: 795,
+            y2: 380
+        })
+        .attr("class", "ligneTableau");
+
+svg.append('line')
+        .attr({
+            x1: 860,
+            y1: 280,
+            x2: 860,
+            y2: 380
+        })
+        .attr("class", "ligneTableau");
+
+svg.append('line')
+        .attr({
+            x1: 925,
+            y1: 280,
+            x2: 925,
+            y2: 380
+        })
+        .attr("class", "ligneTableau");
+
+svg.append('line')
+        .attr({
+            x1: 990,
+            y1: 280,
+            x2: 990,
+            y2: 380
+        })
+        .attr("class", "ligneTableau");
+
+svg.append('line')
+        .attr({
+            x1: 1055,
+            y1: 280,
+            x2: 1055,
+            y2: 380
+        })
+        .attr("class", "ligneTableau");
+svg.append('line')
+        .attr({
+            x1: 1120,
+            y1: 280,
+            x2: 1120,
+            y2: 380
+        })
+        .attr("class", "ligneTableau");
+
+//ligne qui separe les tableaux
+svg.append('line')
+        .attr({
+            x1: 570,
+            y1: 400,
+            x2: 1120,
+            y2: 400
+        })
+        .attr("class", "ligneTableau");
+//Deuxieme tableau
+svg.append('line')
+        .attr({
+            x1: 730,
+            y1: 430,
+            x2: 1120,
+            y2: 430
+        })
+        .attr("class", "ligneTableau");
+
+svg.append('line')
+        .attr({
+            x1: 730,
+            y1: 480,
+            x2: 1120,
+            y2: 480
+        })
+        .attr("class", "ligneTableau");
+svg.append('line')
+        .attr({
+            x1: 730,
+            y1: 530,
+            x2: 1120,
+            y2: 530
+        })
+        .attr("class", "ligneTableau");
+
+svg.append('line')
+        .attr({
+            x1: 730,
+            y1: 430,
+            x2: 730,
+            y2: 530
+        })
+        .attr("class", "ligneTableau");
+
+svg.append('line')
+        .attr({
+            x1: 795,
+            y1: 430,
+            x2: 795,
+            y2: 530
+        })
+        .attr("class", "ligneTableau");
+
+svg.append('line')
+        .attr({
+            x1: 860,
+            y1: 430,
+            x2: 860,
+            y2: 530
+        })
+        .attr("class", "ligneTableau");
+
+svg.append('line')
+        .attr({
+            x1: 925,
+            y1: 430,
+            x2: 925,
+            y2: 530
+        })
+        .attr("class", "ligneTableau");
+
+svg.append('line')
+        .attr({
+            x1: 990,
+            y1: 430,
+            x2: 990,
+            y2: 530
+        })
+        .attr("class", "ligneTableau");
+
+svg.append('line')
+        .attr({
+            x1: 1055,
+            y1: 430,
+            x2: 1055,
+            y2: 530
+        })
+        .attr("class", "ligneTableau");
+svg.append('line')
+        .attr({
+            x1: 1120,
+            y1: 430,
+            x2: 1120,
+            y2: 530
+        })
+        .attr("class", "ligneTableau");

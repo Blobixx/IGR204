@@ -108,29 +108,15 @@ svg.append("text")
 
 // Toutes les informations du profil
 svg.append("text").attr("x", 570).attr("y", 150).attr("class", "sousTitre").text("Match_es :")
-    .on("mouseover", function() {
-        circle.attr("fill", "blue")
-    });
 
 svg.append("text").attr("x", 570).attr("y", 180).attr("class", "sousTitre").text("Id :")
-    .on("mouseover", function() {
-        circle.attr("fill", "red")
-    });
 
 svg.append("text").attr("x", 570).attr("y", 210).attr("class", "sousTitre").text("Choice :")
-    .on("mouseover", function() {
-        circle.attr("fill", "green")
-    });
 
 svg.append("text").attr("x", 570).attr("y", 240).attr("class", "sousTitre").text("Round :")
-    .on("mouseover", function() {
-        circle.attr("fill", "yellow")
-    });
 
 svg.append("text").attr("x", 570).attr("y", 270).attr("class", "sousTitre").text("Mode :")
-    .on("mouseover", function() {
-        circle.attr("fill", "pink")
-    });
+
 
 //vertical gauche
 svg.append('line')
@@ -138,7 +124,7 @@ svg.append('line')
             x1: 600,
             y1: 450,
             x2: 600,
-            y2: 630
+            y2: 750
         })
         .attr("class", "ligneTableau");
 //vertical droite
@@ -147,7 +133,7 @@ svg.append('line')
             x1: 900,
             y1: 450,
             x2: 900,
-            y2: 630
+            y2: 750
         })
         .attr("class", "ligneTableau");
 
@@ -157,10 +143,11 @@ svg.append('line')
             x1: 750,
             y1: 450,
             x2: 750,
-            y2: 630
+            y2: 750
         })
         .attr("class", "ligneTableau");
 
+//Lignes horizontales du haut vers le bas
 svg.append('line')
         .attr({
             x1: 600,
@@ -173,8 +160,53 @@ svg.append('line')
 svg.append('line')
         .attr({
             x1: 600,
-            y1: 630,
+            y1: 500,
             x2: 900,
-            y2: 630
+            y2: 500
+        })
+        .attr("class", "ligneTableau");
+
+svg.append('line')
+        .attr({
+            x1: 600,
+            y1: 550,
+            x2: 900,
+            y2: 550
+        })
+        .attr("class", "ligneTableau");
+
+svg.append('line')
+        .attr({
+            x1: 600,
+            y1: 600,
+            x2: 900,
+            y2: 600
+        })
+        .attr("class", "ligneTableau");
+
+svg.append('line')
+        .attr({
+            x1: 600,
+            y1: 650,
+            x2: 900,
+            y2: 650
+        })
+        .attr("class", "ligneTableau");
+
+svg.append('line')
+        .attr({
+            x1: 600,
+            y1: 700,
+            x2: 900,
+            y2: 700
+        })
+        .attr("class", "ligneTableau");
+
+svg.append('line')
+        .attr({
+            x1: 600,
+            y1: 750,
+            x2: 900,
+            y2: 750
         })
         .attr("class", "ligneTableau");

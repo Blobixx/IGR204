@@ -29,7 +29,7 @@ path {
 
 .ligneTableau {
   stroke: #000 ;
-  stroke-width: 3px ;
+  stroke-width: 2px ;
 }
 
 .title2 {
@@ -38,6 +38,6 @@ path {
 }
 
 .sousTitre {
-  font-size: 20px ;
+  font-size: 17px ;
   fill : black ;
 }

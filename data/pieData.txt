@@ -1,8 +1,8 @@
-Gender Pie : 
-Age Pie : 
-Principal interest : 
-Race : 
-Race impact : 
-Goal : 
-Date fréquency : 
+Gender Pie :
+Age Pie :
+Principal interest :
+Race :
+Race impact :
+Goal :
+Date frequency :
 Go out frequency : 
