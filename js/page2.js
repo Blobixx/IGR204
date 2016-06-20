@@ -73,7 +73,6 @@ svg.append("path")
     .attr("class", "equator")
     .attr("d", path);
 
-var feature = svg.selectAll("path");
 
 //Intéractions sur la sphère : zoom + rotation
 var zoom = d3.geo.zoom()
@@ -86,80 +85,130 @@ var zoom = d3.geo.zoom()
 d3.selectAll('path')
     .call(zoom);
 
-/*// Changer de page 
-svg.append("text")
+// Changer de page
+/*svg.append("text")
     .attr("x", (width / 4) - 2 * margin.left)
     .attr("y", height - 20)
     .attr("class", "title2")
-    .text("Show Waves");
+    .text("Show Waves");*/
 
 // idd de l'utilisateur
-svg.append("text")
+/*svg.append("text")
     .attr("x", (width / 4) - 2 * margin.left)
     .attr("y", 100)
     .attr("class", "sousTitre")
     .text("Idd from the user : ");*/
 
-// Afficher le profil 
+// Afficher le profil
 svg.append("text")
     .attr("x", 3 * (width / 4) - 2 * margin.left)
     .attr("y", 100)
     .attr("class", "title2")
-    .text("Waves");
+    .text("Wave");
 
 // Toutes les informations du profil
-svg.append("text").attr("x", 570).attr("y", 150).attr("class", "sousTitre").text("Gender :")
-    .on("mouseover", function() {
-        circle.attr("fill", "blue")})
-    .on("mouseout", function() {
-        circle.attr("fill", "white")
-    });
+svg.append("text").attr("x", 570).attr("y", 150).attr("class", "sousTitre").text("Match_es :")
 
-svg.append("text").attr("x", 570).attr("y", 180).attr("class", "sousTitre").text("Age :")
-    .on("mouseover", function() {
-        circle.attr("fill", "red")})
-    .on("mouseout", function() {
-        circle.attr("fill", "white")
-    });
+svg.append("text").attr("x", 570).attr("y", 180).attr("class", "sousTitre").text("Id :")
 
-svg.append("text").attr("x", 570).attr("y", 210).attr("class", "sousTitre").text("Match_es :")
-    .on("mouseover", function() {
-        circle.attr("fill", "green")})
-    .on("mouseout", function() {
-        circle.attr("fill", "white")
-    });
+svg.append("text").attr("x", 570).attr("y", 210).attr("class", "sousTitre").text("Choice :")
 
-svg.append("text").attr("x", 570).attr("y", 240).attr("class", "sousTitre").text("Id :")
-    .on("mouseover", function() {
-        circle.attr("fill", "yellow")})
-    .on("mouseout", function() {
-        circle.attr("fill", "white")
-    });
+svg.append("text").attr("x", 570).attr("y", 240).attr("class", "sousTitre").text("Round :")
 
-svg.append("text").attr("x", 570).attr("y", 270).attr("class", "sousTitre").text("Choice :")
-    .on("mouseover", function() {
-        circle.attr("fill", "pink")})
-    .on("mouseout", function() {
-        circle.attr("fill", "white")
-    });
+svg.append("text").attr("x", 570).attr("y", 270).attr("class", "sousTitre").text("Mode :")
 
-svg.append("text").attr("x", 570).attr("y", 300).attr("class", "sousTitre").text("Round :")
-    .on("mouseover", function() {
-        circle.attr("fill", "gold")})
-    .on("mouseout", function() {
-        circle.attr("fill", "white")
-    });
 
-svg.append("text").attr("x", 570).attr("y", 330).attr("class", "sousTitre").text("Mode :")
-    .on("mouseover", function() {
-        circle.attr("fill", "yellow")})
-    .on("mouseout", function() {
-        circle.attr("fill", "white")
-    });
-/*
-svg.append("text").attr("x", 570).attr("y", 360).attr("class", "sousTitre").text("Go out frequency :")
-    .on("mouseover", function() {
-        circle.attr("fill", "black") })
-    .on("mouseout", function() {
-        circle.attr("fill", "white")
-    });*/
+//vertical gauche
+svg.append('line')
+        .attr({
+            x1: 600,
+            y1: 380,
+            x2: 600,
+            y2: 680
+        })
+        .attr("class", "ligneTableau");
+//vertical droite
+svg.append('line')
+        .attr({
+            x1: 900,
+            y1: 380,
+            x2: 900,
+            y2: 680
+        })
+        .attr("class", "ligneTableau");
+
+//vertical milieu
+svg.append('line')
+        .attr({
+            x1: 750,
+            y1: 380,
+            x2: 750,
+            y2: 680
+        })
+        .attr("class", "ligneTableau");
+
+//Lignes horizontales du haut vers le bas
+svg.append('line')
+        .attr({
+            x1: 600,
+            y1: 380,
+            x2: 900,
+            y2: 380
+        })
+        .attr("class", "ligneTableau");
+
+svg.append('line')
+        .attr({
+            x1: 600,
+            y1: 430,
+            x2: 900,
+            y2: 430
+        })
+        .attr("class", "ligneTableau");
+
+svg.append('line')
+        .attr({
+            x1: 600,
+            y1: 480,
+            x2: 900,
+            y2: 480
+        })
+        .attr("class", "ligneTableau");
+
+svg.append('line')
+        .attr({
+            x1: 600,
+            y1: 530,
+            x2: 900,
+            y2: 530
+        })
+        .attr("class", "ligneTableau");
+
+svg.append('line')
+        .attr({
+            x1: 600,
+            y1: 580,
+            x2: 900,
+            y2: 580
+        })
+        .attr("class", "ligneTableau");
+
+svg.append('line')
+        .attr({
+            x1: 600,
+            y1: 630,
+            x2: 900,
+            y2: 630
+        })
+        .attr("class", "ligneTableau");
+
+svg.append('line')
+        .attr({
+            x1: 600,
+            y1: 680,
+            x2: 900,
+            y2: 680
+        })
+        .attr("class", "ligneTableau");
+		
+		

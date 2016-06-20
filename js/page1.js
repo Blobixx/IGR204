@@ -86,7 +86,7 @@ var zoom = d3.geo.zoom()
 d3.selectAll('path')
     .call(zoom);
 
-// Changer de page 
+// Changer de page
 svg.append("text")
     .attr("x", (width / 4) - 2 * margin.left)
     .attr("y", height - 20)
@@ -98,14 +98,14 @@ svg.append("text")
     .attr("x", (width / 4) - 2 * margin.left)
     .attr("y", 100)
     .attr("class", "sousTitre")
-    .text("Idd from the user : ");
+    .text("User's Idd ");
 
-// Afficher le profil 
+// Afficher le profil
 svg.append("text")
     .attr("x", 3 * (width / 4) - 2 * margin.left)
     .attr("y", 100)
     .attr("class", "title2")
-    .text("Profil from the user");
+    .text("User's profil");
 
 // Toutes les informations du profil
 svg.append("text").attr("x", 570).attr("y", 150).attr("class", "sousTitre").text("Gender :")
@@ -163,3 +163,6 @@ svg.append("text").attr("x", 570).attr("y", 360).attr("class", "sousTitre").text
     .on("mouseout", function() {
         circle.attr("fill", "white")
     });
+svg.append("text").attr("x", 570).attr("y", 390).attr("class", "sousTitre").text("Field :");
+
+svg.append("text").attr("x", 570).attr("y", 420).attr("class", "sousTitre").text("Income :");
