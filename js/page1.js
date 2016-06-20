@@ -13,17 +13,6 @@ width = 1000 + margin.left + margin.right,
     r = 100,
     p = Math.PI * 2;
 
-var projection = d3.geo.orthographic()
-    .scale(240)
-    .translate([width / 4, height / 2 + 20])
-    .clipAngle(90 + 1e-6)
-    .precision(.3);
-
-var path = d3.geo.path()
-    .projection(projection);
-
-var graticule = d3.geo.graticule();
-
 var svg = d3.select("#tab-1").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom);
@@ -43,38 +32,7 @@ var circle = svg.append("circle")
     .attr("r", 180)
     .attr("fill", "white");
 
-
-// Définition de la sphere
-svg.append("path")
-    .datum({
-        type: "Sphere"
-    })
-    .attr("class", "sphere")
-    .attr("d", path);
-
-// Définition des lignes latitude/longitude
-svg.append("path")
-    .datum(graticule)
-    .attr("class", "graticule")
-    .attr("d", path);
-
-// Definition de l'équateur
-svg.append("path")
-    .datum({
-        type: "LineString",
-        coordinates: [
-            [-180, 0],
-            [-90, 0],
-            [0, 0],
-            [90, 0],
-            [180, 0]
-        ]
-    })
-    .attr("class", "equator")
-    .attr("d", path);
-
-var feature = svg.selectAll("path");
-
+/*
 //Intéractions sur la sphère : zoom + rotation
 var zoom = d3.geo.zoom()
     .projection(projection)
@@ -85,6 +43,7 @@ var zoom = d3.geo.zoom()
     })
 d3.selectAll('path')
     .call(zoom);
+	*/
 
 // Changer de page
 svg.append("text")

@@ -3,18 +3,6 @@ path {
   stroke-linejoin : round;
 }
 
-.sphere,
-.graticule {
-  stroke: blue;
-  fill: white;
-  stroke-width : 2px;
-}
-
-.equator {
-  stroke: blue;
-  stroke-width: 2px;
-}
-
 .title {
   text-anchor: middle ;
   font-size: 50px ;
