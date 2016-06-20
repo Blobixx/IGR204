@@ -119,7 +119,7 @@ svg.append('line')
         .attr({
             x1: 730,
             y1: 170,
-            x2: 1130,
+            x2: 1120,
             y2: 170
         })
         .attr("class", "ligneTableau");
@@ -128,7 +128,7 @@ svg.append('line')
         .attr({
             x1: 730,
             y1: 220,
-            x2: 1130,
+            x2: 1120,
             y2: 220
         })
         .attr("class", "ligneTableau");
@@ -171,12 +171,17 @@ svg.append('line')
 
 svg.append('line')
         .attr({
-            x1: 1130,
+            x1: 1120,
             y1: 170,
-            x2: 1130,
+            x2: 1120,
             y2: 220
         })
         .attr("class", "ligneTableau");
+
+svg.append("text").attr("x", 740).attr("y", 200).attr("class", "sousTitre3").text("Age:");
+svg.append("text").attr("x", 840).attr("y", 200).attr("class", "sousTitre3").text("Race:");
+svg.append("text").attr("x", 940).attr("y", 200).attr("class", "sousTitre3").text("Id:");
+svg.append("text").attr("x", 1040).attr("y", 200).attr("class", "sousTitre3").text("Idd:");
 
 svg.append("text").attr("x", 570).attr("y", 310).attr("class", "sousTitre").text("Préférence");
 svg.append("text").attr("x", 570).attr("y", 355).attr("class", "sousTitre").text("Note");
@@ -270,7 +275,7 @@ svg.append('line')
             y2: 380
         })
         .attr("class", "ligneTableau");
-		
+
 svg.append("text").attr("x", 732).attr("y", 270).attr("class", "sousTitre2").text("Attirance");
 svg.append("text").attr("x", 797).attr("y", 270).attr("class", "sousTitre2").text("Sincérité");
 svg.append("text").attr("x", 862).attr("y", 270).attr("class", "sousTitre2").text("Ambition");
@@ -287,7 +292,7 @@ svg.append('line')
             y2: 400
         })
         .attr("class", "ligneTableau");
-		
+
 //Deuxieme tableau
 svg.append('line')
         .attr({
@@ -376,7 +381,7 @@ svg.append('line')
             y2: 530
         })
         .attr("class", "ligneTableau");
-		
+
 svg.append("text").attr("x", 732).attr("y", 420).attr("class", "sousTitre2").text("Attirance");
 svg.append("text").attr("x", 797).attr("y", 420).attr("class", "sousTitre2").text("Sincérité");
 svg.append("text").attr("x", 862).attr("y", 420).attr("class", "sousTitre2").text("Ambition");
@@ -395,7 +400,7 @@ svg.append('line')
         })
         .attr("class", "ligneTableau");
 
-//vertical milieu1		
+//vertical milieu1
 svg.append('line')
         .attr({
             x1: 900,
@@ -405,7 +410,7 @@ svg.append('line')
         })
         .attr("class", "ligneTableau")
 
-//vertical milieu2		
+//vertical milieu2
 svg.append('line')
         .attr({
             x1: 1010,
@@ -415,7 +420,7 @@ svg.append('line')
         })
         .attr("class", "ligneTableau")
 
-//vertical droite		
+//vertical droite
 svg.append('line')
         .attr({
             x1: 1120,
@@ -425,7 +430,7 @@ svg.append('line')
         })
         .attr("class", "ligneTableau")
 
-	
+
 svg.append('line')
         .attr({
             x1: 730,
@@ -452,7 +457,7 @@ svg.append('line')
             y2: 750
         })
         .attr("class", "ligneTableau")
-		
+
 svg.append('line')
         .attr({
             x1: 730,
@@ -461,7 +466,7 @@ svg.append('line')
             y2: 790
         })
         .attr("class", "ligneTableau")
-		
+
 svg.append('line')
         .attr({
             x1: 730,
@@ -470,7 +475,7 @@ svg.append('line')
             y2: 830
         })
         .attr("class", "ligneTableau")
-		
+
 svg.append('line')
         .attr({
             x1: 730,
@@ -479,3 +484,10 @@ svg.append('line')
             y2: 870
         })
         .attr("class", "ligneTableau")
+
+svg.append("text").attr("x", 910).attr("y", 695).attr("class", "sousTitre3").text("Partcipant");
+svg.append("text").attr("x", 1020).attr("y", 695).attr("class", "sousTitre3").text("Partner");
+svg.append("text").attr("x", 745).attr("y", 740).attr("class", "sousTitre3").text("Like");
+svg.append("text").attr("x", 745).attr("y", 780).attr("class", "sousTitre3").text("Probability");
+svg.append("text").attr("x", 745).attr("y", 820).attr("class", "sousTitre3").text("Met");
+svg.append("text").attr("x", 745).attr("y", 860).attr("class", "sousTitre3").text("Decision");

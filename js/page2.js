@@ -1,4 +1,4 @@
-// Création des variables qui vont composer le svg
+// Crï¿½ation des variables qui vont composer le svg
 var margin = {
     right: 50,
     left: 50,
@@ -44,7 +44,7 @@ var circle = svg.append("circle")
     .attr("fill", "white");
 
 
-// Définition de la sphere
+// Dï¿½finition de la sphere
 svg.append("path")
     .datum({
         type: "Sphere"
@@ -52,13 +52,13 @@ svg.append("path")
     .attr("class", "sphere")
     .attr("d", path);
 
-// Définition des lignes latitude/longitude
+// Dï¿½finition des lignes latitude/longitude
 svg.append("path")
     .datum(graticule)
     .attr("class", "graticule")
     .attr("d", path);
 
-// Definition de l'équateur
+// Definition de l'ï¿½quateur
 svg.append("path")
     .datum({
         type: "LineString",
@@ -74,7 +74,7 @@ svg.append("path")
     .attr("d", path);
 
 
-//Intéractions sur la sphère : zoom + rotation
+//Intï¿½ractions sur la sphï¿½re : zoom + rotation
 var zoom = d3.geo.zoom()
     .projection(projection)
     .scaleExtent([projection.scale() * .4, projection.scale() * 1.5])
@@ -210,5 +210,10 @@ svg.append('line')
             y2: 680
         })
         .attr("class", "ligneTableau");
-		
-		
+
+svg.append("text").attr("x", 610).attr("y", 410).attr("class", "sousTitre3").text("Attirance");
+svg.append("text").attr("x", 610).attr("y", 460).attr("class", "sousTitre3").text("SincÃ©ritÃ©");
+svg.append("text").attr("x", 610).attr("y", 510).attr("class", "sousTitre3").text("Ambition");
+svg.append("text").attr("x", 610).attr("y", 560).attr("class", "sousTitre3").text("Intelligence");
+svg.append("text").attr("x", 610).attr("y", 610).attr("class", "sousTitre3").text("Shared");
+svg.append("text").attr("x", 610).attr("y", 660).attr("class", "sousTitre3").text("Fun");
