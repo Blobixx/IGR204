@@ -30,7 +30,7 @@ app.directive("globe", function() {
 
         var projection, path,
             svg, features, graticule, zoom,
-            mapJson = 'data/grid.json',
+            mapJson = 'data/mapping.json',
             squares, squareSet;
 
         projection = d3.geo.orthographic()
@@ -213,7 +213,7 @@ app.directive("globe", function() {
                 .attr('class', 'overlay')
                 .attr('d', path)
                 .on('click', function(d) {
-                    alert("test");
+                    alert("id de l'utilisateur : " + d.properties.id);
                 });
 
             return set;
