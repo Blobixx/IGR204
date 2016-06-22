@@ -30,8 +30,8 @@ app.directive("globe", function() {
 
         var projection, path,
             svg, features, graticule, zoom,
-            mapJson = 'data/countries-and-states.json',
-            states, stateSet, countries, countrySet;
+            mapJson = 'data/grid.json',
+            squares, squareSet;
 
         projection = d3.geo.orthographic()
             .scale(240)
@@ -181,12 +181,19 @@ app.directive("globe", function() {
                 svg.selectAll('path').attr('d', path);
             });
 
-        d3.json(mapJson, function(error, world) {
-            states = topojson.feature(world, world.objects.states).features;
-            countries = topojson.feature(world, world.objects.countries).features;
+        d3.json(mapJson, function(error, json) {
 
-            stateSet = drawFeatureSet('state', states);
-            countrySet = drawFeatureSet('country', countries);
+            squares = json.features;
+            squareSet = drawFeatureSet('square', squares);
+
+            /*
+			svg.selectAll("path")
+                   .data(json.features)
+                   .enter()
+                   .append("path")
+                   .attr("d", path)
+                   .style("fill", "steelblue");
+			*/
 
             d3.selectAll('path').call(zoom);
         });
@@ -196,13 +203,7 @@ app.directive("globe", function() {
                 .data(featureSet)
                 .enter()
                 .append('g')
-                .attr('class', className)
-                .attr('data-name', function(d) {
-                    return d.properties.name;
-                })
-                .attr('data-id', function(d) {
-                    return d.id;
-                });
+                .attr('class', className);
 
             set.append('path')
                 .attr('class', 'land')
@@ -211,14 +212,8 @@ app.directive("globe", function() {
             set.append('path')
                 .attr('class', 'overlay')
                 .attr('d', path)
-                .attr('style', function(d) {
-                    if (scope.data[d.id]) {
-                        return 'fill-opacity: ' + (scope.data[d.id] / 100);
-                    }
-                })
                 .on('click', function(d) {
-                    var val = (scope.data[d.id]) ? scope.data[d.id] : 0;
-                    d3.select(element[0]).select('.info').html(d.properties.name + ': ' + val);
+                    alert("test");
                 });
 
             return set;

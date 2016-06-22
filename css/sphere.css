@@ -4,32 +4,32 @@ path {
 }
 
 .background {
-  fill: rgba(200,212,220,.5);
+  fill: white;
   stroke-width: .8px;
   stroke: black;
 }
 
 .graticule {
-    stroke: rgba(0,0,0, .2);
+    stroke: white;
     stroke-width: .5px;
 }
 
-.country {
+.square {
     cursor: pointer;
 }
 
-.country .land, .state .land {
-    fill: white;
-    stroke: rgba(0,0,0, .2);
+.square .land {
+    fill: #7AEBFF;
+    stroke: white;
     stroke-width .3px;
 }
 
-.state .overlay {
+.square .overlay {
     fill: blue;
     fill-opacity: 0;
 }
 
-.country .overlay {
+.square .overlay {
     fill: orange;
     fill-opacity: 0;
 }
