@@ -186,15 +186,6 @@ app.directive("globe", function() {
             squares = json.features;
             squareSet = drawFeatureSet('square', squares);
 
-            /*
-			svg.selectAll("path")
-                   .data(json.features)
-                   .enter()
-                   .append("path")
-                   .attr("d", path)
-                   .style("fill", "steelblue");
-			*/
-
             d3.selectAll('path').call(zoom);
         });
 
@@ -213,10 +204,31 @@ app.directive("globe", function() {
                 .attr('class', 'overlay')
                 .attr('d', path)
                 .on('click', function(d) {
-                    alert("id de l'utilisateur : " + d.properties.id);
+                    rotateToFocusOn(d);
+                    setTimeout(function() {
+                        alert("id de l'utilisateur : " + d.properties.id);
+                    }, 1500);
+                    //alert("id de l'utilisateur : " + d.properties.id);
                 });
 
             return set;
+        }
+
+        function rotateToFocusOn(x) {
+            var coords = d3.geo.centroid(x);
+            coords[0] = -coords[0];
+            coords[1] = -coords[1];
+
+            d3.transition()
+                .duration(1250)
+                .tween('rotate', function() {
+                    var r = d3.interpolate(projection.rotate(), coords);
+                    return function(t) {
+                        projection.rotate(r(t));
+                        svg.selectAll('path').attr('d', path);
+                    };
+                })
+                .transition();
         }
     }
 });
