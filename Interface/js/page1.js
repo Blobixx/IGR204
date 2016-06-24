@@ -12,11 +12,31 @@ width = 1000 + margin.left + margin.right,
     time = Date.now(),
     r = 100,
     p = Math.PI * 2;
+    
+var data = [10,50,80];
 
 var svg = d3.select("#tab-1").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom);
+    
+var group=svg.append("g").attr("transform","translate(200,200)");
 
+var arc=d3.svg.arc()
+	.innerRadius(200)
+	.outerRadius(r);
+var pie = d3.layout.pie()
+	.value(function(d) {return d;});
+	
+var arcs = group.selectAll(".arc")
+	.data(pie(data))
+	.enter()
+	.append("g")
+	.attr("class","arc);
+arcs.append("path")
+	.attr("d",arc);
+	
+
+var color = d3.scale.category20c();   
 var ligne = svg.append('line')
     .attr({
         x1: 550,
@@ -123,14 +143,14 @@ svg.append("text").attr("x", 570).attr("y", 360).attr("class", "sousTitre").text
         circle.attr("fill", "white")
     });
 svg.append("text").attr("x", 570).attr("y", 390).attr("class", "sousTitre").text("Field :")
-.on("mouseover", function() {
+	.on("mouseover", function() {
         circle.attr("fill", "black") })
     .on("mouseout", function() {
         circle.attr("fill", "white")
     });
 
 svg.append("text").attr("x", 570).attr("y", 420).attr("class", "sousTitre").text("Income :")
-.on("mouseover", function() {
+	.on("mouseover", function() {
         circle.attr("fill", "black") })
     .on("mouseout", function() {
         circle.attr("fill", "white")
