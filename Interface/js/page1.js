@@ -122,6 +122,16 @@ svg.append("text").attr("x", 570).attr("y", 360).attr("class", "sousTitre").text
     .on("mouseout", function() {
         circle.attr("fill", "white")
     });
-svg.append("text").attr("x", 570).attr("y", 390).attr("class", "sousTitre").text("Field :");
+svg.append("text").attr("x", 570).attr("y", 390).attr("class", "sousTitre").text("Field :")
+.on("mouseover", function() {
+        circle.attr("fill", "black") })
+    .on("mouseout", function() {
+        circle.attr("fill", "white")
+    });
 
-svg.append("text").attr("x", 570).attr("y", 420).attr("class", "sousTitre").text("Income :");
+svg.append("text").attr("x", 570).attr("y", 420).attr("class", "sousTitre").text("Income :")
+.on("mouseover", function() {
+        circle.attr("fill", "black") })
+    .on("mouseout", function() {
+        circle.attr("fill", "white")
+    });
