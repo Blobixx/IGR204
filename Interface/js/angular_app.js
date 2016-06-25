@@ -76,12 +76,45 @@ app.directive("globe", function() {
             })
             .attr("class", "ligne");
 
-        var circle = svg.append("circle")
+    /*    var circle = svg.append("circle")
             .attr("cx", 3 * (width / 4) + 3 * margin.left)
             .attr("cy", 3 * (height / 4))
             .attr("r", 180)
-            .attr("fill", "white");
+            .attr("fill", "white");   */
+            
+var dataRace = [10,50,80];
+var raceLabel=["black","white","asian"];
+var color = d3.scale.category20c();  
 
+    
+var group=svg.append("g").attr("transform","translate(800,550)");
+
+var arcRace=d3.svg.arc()
+	.innerRadius(0)
+	.outerRadius(100);
+	
+var pie = d3.layout.pie()
+	.value(function(d) {return d;});
+	
+var pieRace = group.selectAll(".arc")
+	.data(pie(dataRace))
+	.enter()
+	.append("g")
+	.attr("class","arc");
+	
+pieRace.append("path")
+	.attr("d",arcRace).attr("fill",function(d){return color(d.dataRace) ;});
+	
+pieRace.append("text")                                     //add a label to each slice
+                .attr("transform", function(d) {                    //set the label's origin to the center of the arc
+                //we have to make sure to set these before calling arc.centroid
+                d.innerRadius = 0;
+                d.outerRadius = 100;
+                return "translate(" + arcRace.centroid(d) + ")";        //this gives us a pair of coordinates like [50, 50]
+            })
+            .attr("text-anchor", "middle")                          //center the text on it's origin
+            .text(function(d, i) { return raceLabel[i]; }); 
+		
         // Changer de page
         svg.append("text")
             .attr("x", (width / 4) - 2 * margin.left)
@@ -130,10 +163,10 @@ app.directive("globe", function() {
 
         svg.append("text").attr("x", 570).attr("y", 240).attr("class", "sousTitre").text("Race :")
             .on("mouseover", function() {
-                circle.attr("fill", "yellow")
+                pieRace.attr("d",arcRace)
             })
             .on("mouseout", function() {
-                circle.attr("fill", "white")
+                pieRace.attr("fill", "white")
             });
 
         svg.append("text").attr("x", 570).attr("y", 270).attr("class", "sousTitre").text("Race Impact :")
@@ -167,9 +200,21 @@ app.directive("globe", function() {
             .on("mouseout", function() {
                 circle.attr("fill", "white")
             });
-        svg.append("text").attr("x", 570).attr("y", 390).attr("class", "sousTitre").text("Field :");
+        svg.append("text").attr("x", 570).attr("y", 390).attr("class", "sousTitre").text("Field :")
+          .on("mouseover", function() {
+                circle.attr("fill", "black")
+            })
+            .on("mouseout", function() {
+                circle.attr("fill", "white")
+            });
 
-        svg.append("text").attr("x", 570).attr("y", 420).attr("class", "sousTitre").text("Income :");
+        svg.append("text").attr("x", 570).attr("y", 420).attr("class", "sousTitre").text("Income :")
+          .on("mouseover", function() {
+                circle.attr("fill", "black")
+            })
+            .on("mouseout", function() {
+                circle.attr("fill", "white")
+            });
 
         //Fin design de l'onglet
 
