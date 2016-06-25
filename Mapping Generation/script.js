@@ -1,9 +1,9 @@
 function save() {
 
-    var countX = 15; //cells by x
-    var countY = 15; //cells by y
-    var mapWidth = 100;
-    var mapHeight = 100;
+    var countX = 50; //cells by x
+    var countY = 50; //cells by y
+    var mapWidth = 960;
+    var mapHeight = 500;
     var cellWidth = mapWidth / countX;
     var cellHeight = mapHeight / countY;
     var features = "";

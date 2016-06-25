@@ -1,157 +1,165 @@
-// Création des variables qui vont composer le svg
 var margin = {
     right: 50,
     left: 50,
-    top: 100,
-    bottom: 100
+    top: 20,
+    bottom: 20
 }
-width = 1000 + margin.left + margin.right,
-    height = 500 + margin.top + margin.bottom,
+
+var width = 1000 + margin.left + margin.right,
+    height = 70 + margin.top + margin.bottom,
     rotate = [10, -10],
     velocity = [.003, -.001],
     time = Date.now(),
     r = 100,
     p = Math.PI * 2;
-    
-var data = [10,50,80];
 
-var svg = d3.select("#tab-1").append("svg")
+var svg;
+
+svg = d3.select('#tab-1')
+    .append('svg')
     .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom);
-    
-var group=svg.append("g").attr("transform","translate(200,200)");
+    .attr("height", height + margin.top + margin.bottom)
+    .attr('viewBox', '0, 0, ' + width + ', ' + height);
 
-var arc=d3.svg.arc()
-	.innerRadius(200)
-	.outerRadius(r);
+//Design de l'onglet
+
+var dataRace = [10, 50, 80];
+var raceLabel = ["black", "white", "asian"];
+
+var dataGender = [10, 50, 80];
+var genderLabel = ["black", "white", "asian"];
+
+var dataRaceImpact = [10, 50, 80];
+var raceImpactLabel = ["black", "white", "asian"];
+
+var dataDate = [10, 50, 80];
+var dateLabel = ["black", "white", "asian"];
+
+var dataGo = [10, 50, 80];
+var goLabel = ["black", "white", "asian"];
+
+var dataAge = [10, 50, 80];
+var ageLabel = ["black", "white", "asian"];
+
+var dataGoal = [10, 50, 80];
+var goalLabel = ["black", "white", "asian"];
+
+var dataField = [10, 50, 80];
+var fieldLabel = ["black", "white", "asian"];
+
+var dataIncome = [10, 50, 80];
+var incomeLabel = ["black", "white", "asian"];
+
+var color = d3.scale.category20();
+
+
+var group = svg.append("g").attr("transform", "translate(400, 55)");
+
+var arcRace = d3.svg.arc()
+    .innerRadius(0)
+    .outerRadius(65);
+
 var pie = d3.layout.pie()
-	.value(function(d) {return d;});
-	
-var arcs = group.selectAll(".arc")
-	.data(pie(data))
-	.enter()
-	.append("g")
-	.attr("class","arc);
-arcs.append("path")
-	.attr("d",arc);
-	
+    .value(function(d) {
+        return d;
+    });
 
-var color = d3.scale.category20c();   
-var ligne = svg.append('line')
-    .attr({
-        x1: 550,
-        y1: 100,
-        x2: 550,
-        y2: 700
+var pieRace = group.selectAll(".arc")
+    .data(pie(dataRace))
+    .enter()
+    .append("g")
+    .attr("class", "arc");
+
+pieRace.style("opacity", 0).append("path")
+    .style("fill", function(d, i) {
+        return color(i);
     })
-    .attr("class", "ligne");
+    .attr("d", arcRace);
 
-var circle = svg.append("circle")
-    .attr("cx", 3 * (width / 4) + 3 * margin.left)
-    .attr("cy", 3 * (height / 4))
-    .attr("r", 180)
-    .attr("fill", "white");
 
-/*
-//Intéractions sur la sphère : zoom + rotation
-var zoom = d3.geo.zoom()
-    .projection(projection)
-    .scaleExtent([projection.scale() * .4, projection.scale() * 1.5])
-    .on("zoom.redraw", function() {
-        d3.event.sourceEvent.preventDefault();
-        svg.selectAll("path").attr("d", path);
+pieRace.append("text") //add a label to each slice
+    .attr("transform", function(d) { //set the label's origin to the center of the arc
+        //we have to make sure to set these before calling arc.centroid
+        d.innerRadius = 0;
+        d.outerRadius = 100;
+        return "translate(" + arcRace.centroid(d) + ")"; //this gives us a pair of coordinates like [50, 50]
     })
-d3.selectAll('path')
-    .call(zoom);
-	*/
-
-// Changer de page
-svg.append("text")
-    .attr("x", (width / 4) - 2 * margin.left)
-    .attr("y", height - 20)
-    .attr("class", "title2")
-    .text("Show Waves");
-
-// idd de l'utilisateur
-svg.append("text")
-    .attr("x", (width / 4) - 2 * margin.left)
-    .attr("y", 100)
-    .attr("class", "sousTitre")
-    .text("User's Idd ");
-
-// Afficher le profil
-svg.append("text")
-    .attr("x", 3 * (width / 4) - 2 * margin.left)
-    .attr("y", 100)
-    .attr("class", "title2")
-    .text("User's profil");
+    .attr("text-anchor", "middle") //center the text on it's origin
+    .text(function(d, i) {
+        return raceLabel[i];
+    });
 
 // Toutes les informations du profil
-svg.append("text").attr("x", 570).attr("y", 150).attr("class", "sousTitre").text("Gender :")
+svg.append("text").attr("x", 0).attr("y", 0).attr("class", "sousTitre").text("Gender :")
     .on("mouseover", function() {
-        circle.attr("fill", "blue")})
+        circle.attr("fill", "blue")
+    })
     .on("mouseout", function() {
         circle.attr("fill", "white")
     });
 
-svg.append("text").attr("x", 570).attr("y", 180).attr("class", "sousTitre").text("Age :")
+svg.append("text").attr("x", 0).attr("y", 30).attr("class", "sousTitre").text("Age :")
     .on("mouseover", function() {
-        circle.attr("fill", "red")})
+        circle.attr("fill", "red")
+    })
     .on("mouseout", function() {
         circle.attr("fill", "white")
     });
 
-svg.append("text").attr("x", 570).attr("y", 210).attr("class", "sousTitre").text("Principal interest :")
+svg.append("text").attr("x", 0).attr("y", 60).attr("class", "sousTitre").text("Income :")
     .on("mouseover", function() {
-        circle.attr("fill", "green")})
+        circle.attr("fill", "green")
+    })
     .on("mouseout", function() {
         circle.attr("fill", "white")
     });
 
-svg.append("text").attr("x", 570).attr("y", 240).attr("class", "sousTitre").text("Race :")
+svg.append("text").attr("x", 0).attr("y", 90).attr("class", "sousTitre").text("Race :")
     .on("mouseover", function() {
-        circle.attr("fill", "yellow")})
+        pieRace.style("opacity", 1);
+    })
+    .on("mouseout", function() {
+        pieRace.style("opacity", 0);
+    });
+
+svg.append("text").attr("x", 0).attr("y", 120).attr("class", "sousTitre").text("Race Impact :")
+    .on("mouseover", function() {
+        circle.attr("fill", "pink")
+    })
     .on("mouseout", function() {
         circle.attr("fill", "white")
     });
 
-svg.append("text").attr("x", 570).attr("y", 270).attr("class", "sousTitre").text("Race Impact :")
+svg.append("text").attr("x", 0).attr("y", 150).attr("class", "sousTitre").text("Goal :")
     .on("mouseover", function() {
-        circle.attr("fill", "pink")})
+        circle.attr("fill", "gold")
+    })
     .on("mouseout", function() {
         circle.attr("fill", "white")
     });
 
-svg.append("text").attr("x", 570).attr("y", 300).attr("class", "sousTitre").text("Goal :")
+svg.append("text").attr("x", 0).attr("y", 180).attr("class", "sousTitre").text("Date frequency :")
     .on("mouseover", function() {
-        circle.attr("fill", "gold")})
+        circle.attr("fill", "yellow")
+    })
     .on("mouseout", function() {
         circle.attr("fill", "white")
     });
 
-svg.append("text").attr("x", 570).attr("y", 330).attr("class", "sousTitre").text("Date frequency :")
+svg.append("text").attr("x", 0).attr("y", 210).attr("class", "sousTitre").text("Go out frequency :")
     .on("mouseover", function() {
-        circle.attr("fill", "yellow")})
+        circle.attr("fill", "black")
+    })
+    .on("mouseout", function() {
+        circle.attr("fill", "white")
+    });
+svg.append("text").attr("x", 0).attr("y", 240).attr("class", "sousTitre").text("Field :")
+    .on("mouseover", function() {
+        circle.attr("fill", "black")
+    })
     .on("mouseout", function() {
         circle.attr("fill", "white")
     });
 
-svg.append("text").attr("x", 570).attr("y", 360).attr("class", "sousTitre").text("Go out frequency :")
-    .on("mouseover", function() {
-        circle.attr("fill", "black") })
-    .on("mouseout", function() {
-        circle.attr("fill", "white")
-    });
-svg.append("text").attr("x", 570).attr("y", 390).attr("class", "sousTitre").text("Field :")
-	.on("mouseover", function() {
-        circle.attr("fill", "black") })
-    .on("mouseout", function() {
-        circle.attr("fill", "white")
-    });
 
-svg.append("text").attr("x", 570).attr("y", 420).attr("class", "sousTitre").text("Income :")
-	.on("mouseover", function() {
-        circle.attr("fill", "black") })
-    .on("mouseout", function() {
-        circle.attr("fill", "white")
-    });
+//Fin design de l'onglet

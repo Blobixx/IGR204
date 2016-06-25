@@ -1,48 +1,34 @@
-// Cr�ation des variables qui vont composer le svg
 var margin = {
     right: 50,
     left: 50,
-    top: 100,
-    bottom: 100
+    top: 20,
+    bottom: 20
 }
-width = 1000 + margin.left + margin.right,
-    height = 500 + margin.top + margin.bottom,
+
+var width = 1000 + margin.left + margin.right,
+    height = 70 + margin.top + margin.bottom,
     rotate = [10, -10],
     velocity = [.003, -.001],
     time = Date.now(),
     r = 100,
     p = Math.PI * 2;
 
-var svg = d3.select("#tab-2").append("svg")
+var svg = d3.select("#tab-2")
+	.append("svg")
     .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom);
-
-var ligne = svg.append('line')
-    .attr({
-        x1: 550,
-        y1: 100,
-        x2: 550,
-        y2: 700
-    })
-    .attr("class", "ligne");
-
-// Afficher le profil
-svg.append("text")
-    .attr("x", 3 * (width / 4) - 2 * margin.left)
-    .attr("y", 100)
-    .attr("class", "title2")
-    .text("Wave");
+    .attr("height", height + margin.top + margin.bottom)
+	.attr('viewBox', '0, 0, ' + width + ', ' + height);
 
 // Toutes les informations du profil
-svg.append("text").attr("x", 570).attr("y", 150).attr("class", "sousTitre").text("Match_es :")
+svg.append("text").attr("x", 0).attr("y", 0).attr("class", "sousTitre").text("Match_es :")
 
-svg.append("text").attr("x", 570).attr("y", 180).attr("class", "sousTitre").text("Id :")
+svg.append("text").attr("x", 0).attr("y", 30).attr("class", "sousTitre").text("Id :")
 
-svg.append("text").attr("x", 570).attr("y", 210).attr("class", "sousTitre").text("Choice :")
+svg.append("text").attr("x", 0).attr("y", 60).attr("class", "sousTitre").text("Choice :")
 
-svg.append("text").attr("x", 570).attr("y", 240).attr("class", "sousTitre").text("Round :")
+svg.append("text").attr("x", 0).attr("y", 90).attr("class", "sousTitre").text("Round :")
 
-svg.append("text").attr("x", 570).attr("y", 270).attr("class", "sousTitre").text("Mode :")
+svg.append("text").attr("x", 0).attr("y", 120).attr("class", "sousTitre").text("Mode :")
 
 
 //vertical gauche
