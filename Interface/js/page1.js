@@ -23,17 +23,18 @@ svg = d3.select('#tab-1')
 
 //Design de l'onglet
 
-var dataRace = [10, 50, 80];
-var raceLabel = ["black", "white", "asian"];
+var dataRaceImpact = [58, 22, 15,5];
+var raceImpactLabel = ["Not important", "Important", "Not tell"];
 
-var dataGender = [10, 50, 80];
-var genderLabel = ["black", "white", "asian"];
+var dataGender = [49,51];
+var genderLabel = ["Femme","Homme"];
 
-var dataRaceImpact = [10, 50, 80];
-var raceImpactLabel = ["black", "white", "asian"];
+var dataRace = [5, 56, 8,24,7];
+var raceLabel = ["Black/African American", "European/Caucasian-American",
+ "Latino/Hispanic American ","Asian/Pacific Islander/Asian-American","Other"];
 
-var dataDate = [10, 50, 80];
-var dateLabel = ["black", "white", "asian"];
+var dataDate = [40, 50, 80];
+var dateLabel = ["Several times a year", "once a week", "once a month"];
 
 var dataGo = [10, 50, 80];
 var goLabel = ["black", "white", "asian"];
@@ -51,20 +52,60 @@ var dataIncome = [10, 50, 80];
 var incomeLabel = ["black", "white", "asian"];
 
 var color = d3.scale.category20();
-
-
-var group = svg.append("g").attr("transform", "translate(250, 60)");
-
-var arcRace = d3.svg.arc()
-    .innerRadius(0)
-    .outerRadius(70);
-
 var pie = d3.layout.pie()
     .value(function(d) {
         return d;
     });
 
-var pieRace = group.selectAll(".arc")
+var groupRace=svg.append("g").attr("transform","translate(250, 60)");
+var groupAge=svg.append("g").attr("transform","translate(250, 60)");
+var groupGender=svg.append("g").attr("transform","translate(250, 60)");
+var groupIncome=svg.append("g").attr("transform","translate(250, 60)");
+var groupRaceImpact=svg.append("g").attr("transform","translate(250, 60)");
+var groupGoal=svg.append("g").attr("transform","translate(250, 60)");
+var groupDate=svg.append("g").attr("transform","translate(250, 60)");
+var groupGo=svg.append("g").attr("transform","translate(250, 60)");
+var groupField=svg.append("g").attr("transform","translate(250, 60)");
+
+var arcRace = d3.svg.arc()
+    .innerRadius(0)
+    .outerRadius(70);
+var arcAge = d3.svg.arc()
+    .innerRadius(0)
+    .outerRadius(70);
+    
+var arcGoal = d3.svg.arc()
+    .innerRadius(0)
+    .outerRadius(70);
+
+var arcIncome = d3.svg.arc()
+    .innerRadius(0)
+    .outerRadius(70);
+
+var arcRaceImpact=d3.svg.arc()
+    .innerRadius(0)
+    .outerRadius(70);
+        	
+var arcField=d3.svg.arc()
+    .innerRadius(0)
+    .outerRadius(70);
+        	
+var arcGo=d3.svg.arc()
+    .innerRadius(0)
+    .outerRadius(70);
+    
+
+    
+var arcDate=d3.svg.arc()
+    .innerRadius(0)
+    .outerRadius(70);
+    
+var arcGender=d3.svg.arc()
+    .innerRadius(0)
+    .outerRadius(70);
+
+
+var pieRace = groupRace.selectAll(".arc")
     .data(pie(dataRace))
     .enter()
     .append("g")
@@ -77,7 +118,8 @@ pieRace.style("opacity", 0).append("path")
     .attr("d", arcRace);
 
 
-pieRace.append("text") //add a label to each slice
+pieRace.append("text")
+.attr("font-size","10px") //add a label to each slice
     .attr("transform", function(d) { //set the label's origin to the center of the arc
         //we have to make sure to set these before calling arc.centroid
         d.innerRadius = 0;
@@ -88,70 +130,291 @@ pieRace.append("text") //add a label to each slice
     .text(function(d, i) {
         return raceLabel[i];
     });
+    
+
+
+
+
+var pieAge = groupAge.selectAll(".arc")
+    .data(pie(dataAge))
+    .enter()
+    .append("g")
+    .attr("class", "arc");
+
+pieAge.style("opacity", 0).append("path")
+    .style("fill", function(d, i) {
+        return color(i);
+    })
+    .attr("d", arcAge);
+
+
+pieAge.append("text") //add a label to each slice
+    .attr("transform", function(d) { //set the label's origin to the center of the arc
+        //we have to make sure to set these before calling arc.centroid
+        d.innerRadius = 0;
+        d.outerRadius = 100;
+        return "translate(" + arcAge.centroid(d) + ")"; //this gives us a pair of coordinates like [50, 50]
+    })
+    .attr("text-anchor", "middle") //center the text on it's origin
+    .text(function(d, i) {
+        return ageLabel[i];
+    });
+    
+var pieGo = groupGo.selectAll(".arc")
+    .data(pie(dataGo))
+    .enter()
+    .append("g")
+    .attr("class", "arc");
+
+pieGo.style("opacity", 0).append("path")
+    .style("fill", function(d, i) {
+        return color(i);
+    })
+    .attr("d", arcGo);
+
+
+pieGo.append("text") //add a label to each slice
+    .attr("transform", function(d) { //set the label's origin to the center of the arc
+        //we have to make sure to set these before calling arc.centroid
+        d.innerRadius = 0;
+        d.outerRadius = 100;
+        return "translate(" + arcGo.centroid(d) + ")"; //this gives us a pair of coordinates like [50, 50]
+    })
+    .attr("text-anchor", "middle") //center the text on it's origin
+    .text(function(d, i) {
+        return goLabel[i];
+    });
+var pieGender = groupGender.selectAll(".arc")
+        	.data(pie(dataGender))
+        	.enter()
+        	.append("g")
+        	.attr("class","arc");
+        	
+       
+
+        pieGender.style("opacity", 0).append("path")
+          .style("fill",function(d,i){return color(i) ;})
+          .attr("d",arcGender);
+
+
+        pieGender.append("text")                                     //add a label to each slice
+                        .attr("transform", function(d) {                    //set the label's origin to the center of the arc
+                        //we have to make sure to set these before calling arc.centroid
+                        d.innerRadius = 0;
+                        d.outerRadius = 100;
+                        return "translate(" + arcGender.centroid(d) + ")";        //this gives us a pair of coordinates like [50, 50]
+                    })
+                    .attr("text-anchor", "middle")                          //center the text on it's origin
+                    .text(function(d, i) { return genderLabel[i]; });
+                    
+         var pieIncome = groupIncome.selectAll(".arc")
+        	.data(pie(dataIncome))
+        	.enter()
+        	.append("g")
+        	.attr("class","arc");
+        	
+        pieIncome.style("opacity", 0).append("path")
+          .style("fill",function(d,i){return color(i) ;})
+          .attr("d",arcIncome);
+
+
+        pieIncome.append("text")                                     //add a label to each slice
+                        .attr("transform", function(d) {                    //set the label's origin to the center of the arc
+                        //we have to make sure to set these before calling arc.centroid
+                        d.innerRadius = 0;
+                        d.outerRadius = 100;
+                        return "translate(" + arcIncome.centroid(d) + ")";        //this gives us a pair of coordinates like [50, 50]
+                    })
+                    .attr("text-anchor", "middle")                          //center the text on it's origin
+                    .text(function(d, i) { return incomeLabel[i]; });
+                    
+            var pieRaceImpact = groupRaceImpact.selectAll(".arc")
+        	.data(pie(dataRaceImpact))
+        	.enter()
+        	.append("g")
+        	.attr("class","arc");
+        	
+       
+
+        pieRaceImpact.style("opacity", 0).append("path")
+          .style("fill",function(d,i){return color(i) ;})
+          .attr("d",arcRaceImpact);
+
+
+        pieRaceImpact.append("text")                                     //add a label to each slice
+                        .attr("transform", function(d) {                    //set the label's origin to the center of the arc
+                        //we have to make sure to set these before calling arc.centroid
+                        d.innerRadius = 0;
+                        d.outerRadius = 100;
+                        return "translate(" + arcRaceImpact.centroid(d) + ")";        //this gives us a pair of coordinates like [50, 50]
+                    })
+                    .attr("text-anchor", "middle")                          //center the text on it's origin
+                    .text(function(d, i) { return raceImpactLabel[i]; });
+                    
+             var pieGoal = groupGoal.selectAll(".arc")
+        	.data(pie(dataGoal))
+        	.enter()
+        	.append("g")
+        	.attr("class","arc");
+        	
+       
+
+        pieGoal.style("opacity", 0).append("path")
+          .style("fill",function(d,i){return color(i) ;})
+          .attr("d",arcGoal);
+
+
+        pieGoal.append("text")                                     //add a label to each slice
+                        .attr("transform", function(d) {                    //set the label's origin to the center of the arc
+                        //we have to make sure to set these before calling arc.centroid
+                        d.innerRadius = 0;
+                        d.outerRadius = 100;
+                        return "translate(" + arcGoal.centroid(d) + ")";        //this gives us a pair of coordinates like [50, 50]
+                    })
+                    .attr("text-anchor", "middle")                          //center the text on it's origin
+                    .text(function(d, i) { return goalLabel[i]; });
+                    
+         var pieDate = groupDate.selectAll(".arc")
+        	.data(pie(dataDate))
+        	.enter()
+        	.append("g")
+        	.attr("class","arc");
+        	
+       
+
+        pieDate.style("opacity", 0).append("path")
+          .style("fill",function(d,i){return color(i) ;})
+          .attr("d",arcDate);
+
+
+        pieDate.append("text")                                     //add a label to each slice
+                        .attr("transform", function(d) {                    //set the label's origin to the center of the arc
+                        //we have to make sure to set these before calling arc.centroid
+                        d.outerRadius = 220;
+                        d.innerRadius = 215;
+                        
+                        return "translate(" + (arcDate.centroid(d)+150) + ")";        //this gives us a pair of coordinates like [50, 50]
+                    })
+                    .attr("text-anchor", "middle") 
+                    .style("fill", "Purple")                         //center the text on it's origin
+                    .text(function(d, i) { return dateLabel[i]; });
+                    
+         // Add a magnitude value to the larger arcs, translated to the arc centroid and rotated.
+    pieDate.filter(function(d) { return d.endAngle - d.startAngle > .2; }).append("text")
+      .attr("dy", ".35em")
+      .attr("text-anchor", "middle")
+      //.attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")rotate(" + angle(d) + ")"; })
+      .attr("transform", function(d) { //set the label's origin to the center of the arc
+        //we have to make sure to set these before calling arc.centroid
+        d.outerRadius = 70; // Set Outer Coordinate
+        d.innerRadius = 70/2 ; // Set Inner Coordinate
+        return "translate(" + arcDate.centroid(d) + ")rotate(" + angle(d) + ")";
+      })
+      .style("fill", "White")
+      .style("font", "bold 12px Arial")
+      .text(function(d,i) { return dataDate[i]; });
+                    
+         var pieField = groupField.selectAll(".arc")
+        	.data(pie(dataField))
+        	.enter()
+        	.append("g")
+        	.attr("class","arc");
+        	
+       
+
+        pieField.style("opacity", 0).append("path")
+          .style("fill",function(d,i){return color(i) ;})
+          .attr("d",arcField);
+
+
+        pieField.append("text")                                     //add a label to each slice
+                        .attr("transform", function(d) {                    //set the label's origin to the center of the arc
+                        //we have to make sure to set these before calling arc.centroid
+                        d.innerRadius = 0;
+                        d.outerRadius = 100;
+                        return "translate(" + arcField.centroid(d) + ")";        //this gives us a pair of coordinates like [50, 50]
+                    })
+                    .attr("text-anchor", "middle")                          //center the text on it's origin
+                    .text(function(d, i) { return fieldLabel[i]; });
 
 // Toutes les informations du profil
+
 d3.select('#gender').on("mouseover", function() {
-        circle.attr("fill", "blue")
+        pieGender.style("opacity", 1);
+
     })
     .on("mouseout", function() {
-        circle.attr("fill", "white")
-    });
+        pieGender.style("opacity", 0);
+    }) ;
 
 d3.select('#age').on("mouseover", function() {
-        circle.attr("fill", "red")
+        pieAge.style("opacity", 1);
+
     })
     .on("mouseout", function() {
-        circle.attr("fill", "white")
-    });
+        pieAge.style("opacity", 0);
+    }) ;
 
 d3.select('#income').on("mouseover", function() {
-        circle.attr("fill", "green")
+        pieIncome.style("opacity", 1);
+
     })
     .on("mouseout", function() {
-        circle.attr("fill", "white")
-    });
+        pieIncome.style("opacity", 0);
+    }) ;
+
+d3.select('#race_impact').on("mouseover", function() {
+        pieRaceImpact.style("opacity", 1);
+
+    })
+    .on("mouseout", function() {
+        pieRaceImpact.style("opacity", 0);
+    }) ;
+    
+d3.select('#date_frequency').on("mouseover", function() {
+        pieDate.style("opacity", 1);
+
+    })
+    .on("mouseout", function() {
+        pieDate.style("opacity", 0);
+    }) ;
+
+d3.select('#field').on("mouseover", function() {
+        pieField.style("opacity", 1);
+
+    })
+    .on("mouseout", function() {
+        pieField.style("opacity", 0);
+    }) ;
+
+d3.select('#go_out_frequency').on("mouseover", function() {
+        pieGo.style("opacity", 1);
+
+    })
+    .on("mouseout", function() {
+        pieGo.style("opacity", 0);
+    }) ;
+    
+d3.select('#goal').on("mouseover", function() {
+        pieGoal.style("opacity", 1);
+
+    })
+    .on("mouseout", function() {
+        pieGoal.style("opacity", 0);
+    }) ;
 
 d3.select('#race').on("mouseover", function() {
         pieRace.style("opacity", 1);
+
     })
     .on("mouseout", function() {
         pieRace.style("opacity", 0);
-    });
-
-d3.select('#race_impact').on("mouseover", function() {
-        circle.attr("fill", "pink")
-    })
-    .on("mouseout", function() {
-        circle.attr("fill", "white")
-    });
-
-d3.select('#goal').on("mouseover", function() {
-        circle.attr("fill", "gold")
-    })
-    .on("mouseout", function() {
-        circle.attr("fill", "white")
-    });
-
-d3.select('#date_frequency').on("mouseover", function() {
-        circle.attr("fill", "yellow")
-    })
-    .on("mouseout", function() {
-        circle.attr("fill", "white")
-    });
-
-d3.select('#go_out_frequency').on("mouseover", function() {
-        circle.attr("fill", "black")
-    })
-    .on("mouseout", function() {
-        circle.attr("fill", "white")
-    });
-
-d3.select('#field').on("mouseover", function() {
-        circle.attr("fill", "black")
-    })
-    .on("mouseout", function() {
-        circle.attr("fill", "white")
-    });
+    }) ;
 
 
+  // Computes the angle of an arc, converting from radians to degrees.
+    function angle(d) {
+      var a = (d.startAngle + d.endAngle) * 90 / Math.PI - 90;
+      return a > 90 ? a - 180 : a;
+    }
 //Fin design de l'onglet
