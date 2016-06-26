@@ -98,9 +98,10 @@ app.directive("globe", function() {
                 .on('click', function(d) {
                     rotateToFocusOn(d);
                     setTimeout(function() {
-                        alert("id de l'utilisateur : " + d.properties.id);
+						d3.select("#id").html("Id: " + d.properties.id);
+						d3.select("#gender").html("Gender: " + d.properties.gender);
+						d3.select("#age").html("Age: " + d.properties.age);
                     }, 1500);
-                    //alert("id de l'utilisateur : " + d.properties.id);
                 });
 
             return set;

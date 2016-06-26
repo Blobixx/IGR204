@@ -1,9 +1,9 @@
 function save() {
 
-    var countX = 50; //cells by x
-    var countY = 50; //cells by y
-    var mapWidth = 960;
-    var mapHeight = 500;
+    var countX = 10; //cells by x
+    var countY = 10; //cells by y
+    var mapWidth = 100;
+    var mapHeight = 100;
     var cellWidth = mapWidth / countX;
     var cellHeight = mapHeight / countY;
     var features = "";
@@ -38,9 +38,15 @@ function save() {
             ];
             coordinates.push(cell);
             if ((iX == countX - 1) && (iY == countY - 1)) { //On gère la dernière entrée
-                features += '{"type": "Feature", "properties": {"id": ' + id_count + '},"geometry": {"type": "Polygon","coordinates": [[[' + cell[0] + '],[' + cell[1] + '],[' + cell[2] + '],[' + cell[3] + '],[' + cell[4] + ']]]}}'
+                features += '{"type": "Feature", "properties": {"id": ' + id_count + ','
+				+ '"gender": ' + '"Man"' + ','
+				+ '"age": ' + '"25"'
+				+ '},"geometry": {"type": "Polygon","coordinates": [[[' + cell[0] + '],[' + cell[1] + '],[' + cell[2] + '],[' + cell[3] + '],[' + cell[4] + ']]]}}'
             } else {
-                features += '{"type": "Feature", "properties": {"id": ' + id_count + '},"geometry": {"type": "Polygon","coordinates": [[[' + cell[0] + '],[' + cell[1] + '],[' + cell[2] + '],[' + cell[3] + '],[' + cell[4] + ']]]}},'
+                features += '{"type": "Feature", "properties": {"id": ' + id_count  + ','
+				+ '"gender": ' + '"Man"' + ','
+				+ '"age": ' + '"25"'
+				+ '},"geometry": {"type": "Polygon","coordinates": [[[' + cell[0] + '],[' + cell[1] + '],[' + cell[2] + '],[' + cell[3] + '],[' + cell[4] + ']]]}},'
             }
             //refresh cusror for cell
             c.x = c.x + cellWidth;

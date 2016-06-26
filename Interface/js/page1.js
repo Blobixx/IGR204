@@ -6,7 +6,7 @@ var margin = {
 }
 
 var width = 1000 + margin.left + margin.right,
-    height = 70 + margin.top + margin.bottom,
+    height = 100 + margin.top + margin.bottom,
     rotate = [10, -10],
     velocity = [.003, -.001],
     time = Date.now(),
@@ -53,11 +53,11 @@ var incomeLabel = ["black", "white", "asian"];
 var color = d3.scale.category20();
 
 
-var group = svg.append("g").attr("transform", "translate(400, 55)");
+var group = svg.append("g").attr("transform", "translate(250, 60)");
 
 var arcRace = d3.svg.arc()
     .innerRadius(0)
-    .outerRadius(65);
+    .outerRadius(70);
 
 var pie = d3.layout.pie()
     .value(function(d) {
@@ -90,71 +90,63 @@ pieRace.append("text") //add a label to each slice
     });
 
 // Toutes les informations du profil
-svg.append("text").attr("x", 0).attr("y", 0).attr("class", "sousTitre").text("Gender :")
-    .on("mouseover", function() {
+d3.select('#gender').on("mouseover", function() {
         circle.attr("fill", "blue")
     })
     .on("mouseout", function() {
         circle.attr("fill", "white")
     });
 
-svg.append("text").attr("x", 0).attr("y", 30).attr("class", "sousTitre").text("Age :")
-    .on("mouseover", function() {
+d3.select('#age').on("mouseover", function() {
         circle.attr("fill", "red")
     })
     .on("mouseout", function() {
         circle.attr("fill", "white")
     });
 
-svg.append("text").attr("x", 0).attr("y", 60).attr("class", "sousTitre").text("Income :")
-    .on("mouseover", function() {
+d3.select('#income').on("mouseover", function() {
         circle.attr("fill", "green")
     })
     .on("mouseout", function() {
         circle.attr("fill", "white")
     });
 
-svg.append("text").attr("x", 0).attr("y", 90).attr("class", "sousTitre").text("Race :")
-    .on("mouseover", function() {
+d3.select('#race').on("mouseover", function() {
         pieRace.style("opacity", 1);
     })
     .on("mouseout", function() {
         pieRace.style("opacity", 0);
     });
 
-svg.append("text").attr("x", 0).attr("y", 120).attr("class", "sousTitre").text("Race Impact :")
-    .on("mouseover", function() {
+d3.select('#race_impact').on("mouseover", function() {
         circle.attr("fill", "pink")
     })
     .on("mouseout", function() {
         circle.attr("fill", "white")
     });
 
-svg.append("text").attr("x", 0).attr("y", 150).attr("class", "sousTitre").text("Goal :")
-    .on("mouseover", function() {
+d3.select('#goal').on("mouseover", function() {
         circle.attr("fill", "gold")
     })
     .on("mouseout", function() {
         circle.attr("fill", "white")
     });
 
-svg.append("text").attr("x", 0).attr("y", 180).attr("class", "sousTitre").text("Date frequency :")
-    .on("mouseover", function() {
+d3.select('#date_frequency').on("mouseover", function() {
         circle.attr("fill", "yellow")
     })
     .on("mouseout", function() {
         circle.attr("fill", "white")
     });
 
-svg.append("text").attr("x", 0).attr("y", 210).attr("class", "sousTitre").text("Go out frequency :")
-    .on("mouseover", function() {
+d3.select('#go_out_frequency').on("mouseover", function() {
         circle.attr("fill", "black")
     })
     .on("mouseout", function() {
         circle.attr("fill", "white")
     });
-svg.append("text").attr("x", 0).attr("y", 240).attr("class", "sousTitre").text("Field :")
-    .on("mouseover", function() {
+
+d3.select('#field').on("mouseover", function() {
         circle.attr("fill", "black")
     })
     .on("mouseout", function() {
