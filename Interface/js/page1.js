@@ -57,15 +57,15 @@ var pie = d3.layout.pie()
         return d;
     });
 
-var groupRace=svg.append("g").attr("transform","translate(250, 60)");
-var groupAge=svg.append("g").attr("transform","translate(250, 60)");
-var groupGender=svg.append("g").attr("transform","translate(250, 60)");
-var groupIncome=svg.append("g").attr("transform","translate(250, 60)");
-var groupRaceImpact=svg.append("g").attr("transform","translate(250, 60)");
-var groupGoal=svg.append("g").attr("transform","translate(250, 60)");
-var groupDate=svg.append("g").attr("transform","translate(250, 60)");
-var groupGo=svg.append("g").attr("transform","translate(250, 60)");
-var groupField=svg.append("g").attr("transform","translate(250, 60)");
+var groupRace=svg.append("g").attr("transform","translate(250, 80)");
+var groupAge=svg.append("g").attr("transform","translate(250, 80)");
+var groupGender=svg.append("g").attr("transform","translate(250, 80)");
+var groupIncome=svg.append("g").attr("transform","translate(250, 80)");
+var groupRaceImpact=svg.append("g").attr("transform","translate(250, 80)");
+var groupGoal=svg.append("g").attr("transform","translate(250, 80)");
+var groupDate=svg.append("g").attr("transform","translate(250, 80)");
+var groupGo=svg.append("g").attr("transform","translate(250, 80)");
+var groupField=svg.append("g").attr("transform","translate(250, 80)");
 
 var arcRace = d3.svg.arc()
     .innerRadius(0)
@@ -118,21 +118,38 @@ pieRace.style("opacity", 0).append("path")
     .attr("d", arcRace);
 
 
-pieRace.append("text")
-.attr("font-size","10px") //add a label to each slice
-    .attr("transform", function(d) { //set the label's origin to the center of the arc
-        //we have to make sure to set these before calling arc.centroid
-        d.innerRadius = 0;
-        d.outerRadius = 100;
-        return "translate(" + arcRace.centroid(d) + ")"; //this gives us a pair of coordinates like [50, 50]
-    })
-    .attr("text-anchor", "middle") //center the text on it's origin
-    .text(function(d, i) {
-        return raceLabel[i];
-    });
+ pieRace.append("text")                                     //add a label to each slice
+                    .attr("transform", function(d) {
+          var c = arcRace.centroid(d),
+            x = c[0],
+            y = c[1],
+            h = Math.sqrt(x*x + y*y);
+            console.log(c);
+          return "translate(" + (x/h * (70+10)) +  ',' +
+            (y/h * (70+10)) +  ")";
+        })
+                     .attr("text-anchor", function(d) {
+        return (d.endAngle + d.startAngle)/2 > Math.PI ?
+            "end" : "start";
+      })
+                    .style("fill", "Purple")                         //center the text on it's origin
+                    .text(function(d, i) { return raceLabel[i]; });
     
 
-
+       // Add a magnitude value to the larger arcs, translated to the arc centroid and rotated.
+    pieRace.filter(function(d) { return d.endAngle - d.startAngle > .2; }).append("text")
+      .attr("dy", ".35em")
+      .attr("text-anchor", "middle")
+      //.attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")rotate(" + angle(d) + ")"; })
+      .attr("transform", function(d) { //set the label's origin to the center of the arc
+        //we have to make sure to set these before calling arc.centroid
+        d.outerRadius = 70; // Set Outer Coordinate
+        d.innerRadius = 70/2 ; // Set Inner Coordinate
+        return "translate(" + arcRace.centroid(d) + ")rotate(" + angle(d) + ")";
+      })
+      .style("fill", "White")
+      .style("font", "bold 12px Arial")
+      .text(function(d,i) { return dataRace[i]; });
 
 
 var pieAge = groupAge.selectAll(".arc")
@@ -147,19 +164,36 @@ pieAge.style("opacity", 0).append("path")
     })
     .attr("d", arcAge);
 
-
-pieAge.append("text") //add a label to each slice
-    .attr("transform", function(d) { //set the label's origin to the center of the arc
+ pieAge.append("text")                                     //add a label to each slice
+                    .attr("transform", function(d) {
+          var c = arcAge.centroid(d),
+            x = c[0],
+            y = c[1],
+            h = Math.sqrt(x*x + y*y);
+            console.log(c);
+          return "translate(" + (x/h * (70+10)) +  ',' +
+            (y/h * (70+10)) +  ")";
+        })
+                     .attr("text-anchor", function(d) {
+        return (d.endAngle + d.startAngle)/2 > Math.PI ?
+            "end" : "start";
+      })
+                    .style("fill", "Purple")                         //center the text on it's origin
+                    .text(function(d, i) { return ageLabel[i]; });
+       // Add a magnitude value to the larger arcs, translated to the arc centroid and rotated.
+    pieAge.filter(function(d) { return d.endAngle - d.startAngle > .2; }).append("text")
+      .attr("dy", ".35em")
+      .attr("text-anchor", "middle")
+      //.attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")rotate(" + angle(d) + ")"; })
+      .attr("transform", function(d) { //set the label's origin to the center of the arc
         //we have to make sure to set these before calling arc.centroid
-        d.innerRadius = 0;
-        d.outerRadius = 100;
-        return "translate(" + arcAge.centroid(d) + ")"; //this gives us a pair of coordinates like [50, 50]
-    })
-    .attr("text-anchor", "middle") //center the text on it's origin
-    .text(function(d, i) {
-        return ageLabel[i];
-    });
-    
+        d.outerRadius = 70; // Set Outer Coordinate
+        d.innerRadius = 70/2 ; // Set Inner Coordinate
+        return "translate(" + arcAge.centroid(d) + ")rotate(" + angle(d) + ")";
+      })
+      .style("fill", "White")
+      .style("font", "bold 12px Arial")
+      .text(function(d,i) { return dataAge[i]; });
 var pieGo = groupGo.selectAll(".arc")
     .data(pie(dataGo))
     .enter()
@@ -173,17 +207,36 @@ pieGo.style("opacity", 0).append("path")
     .attr("d", arcGo);
 
 
-pieGo.append("text") //add a label to each slice
-    .attr("transform", function(d) { //set the label's origin to the center of the arc
+ pieGo.append("text")                                     //add a label to each slice
+                    .attr("transform", function(d) {
+          var c = arcGo.centroid(d),
+            x = c[0],
+            y = c[1],
+            h = Math.sqrt(x*x + y*y);
+            console.log(c);
+          return "translate(" + (x/h * (70+10)) +  ',' +
+            (y/h * (70+10)) +  ")";
+        })
+                     .attr("text-anchor", function(d) {
+        return (d.endAngle + d.startAngle)/2 > Math.PI ?
+            "end" : "start";
+      })
+                    .style("fill", "Purple")                         //center the text on it's origin
+                    .text(function(d, i) { return goLabel[i]; });
+                    
+    pieGo.filter(function(d) { return d.endAngle - d.startAngle > .2; }).append("text")
+      .attr("dy", ".35em")
+      .attr("text-anchor", "middle")
+      //.attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")rotate(" + angle(d) + ")"; })
+      .attr("transform", function(d) { //set the label's origin to the center of the arc
         //we have to make sure to set these before calling arc.centroid
-        d.innerRadius = 0;
-        d.outerRadius = 100;
-        return "translate(" + arcGo.centroid(d) + ")"; //this gives us a pair of coordinates like [50, 50]
-    })
-    .attr("text-anchor", "middle") //center the text on it's origin
-    .text(function(d, i) {
-        return goLabel[i];
-    });
+        d.outerRadius = 70; // Set Outer Coordinate
+        d.innerRadius = 70/2 ; // Set Inner Coordinate
+        return "translate(" + arcGo.centroid(d) + ")rotate(" + angle(d) + ")";
+      })
+      .style("fill", "White")
+      .style("font", "bold 12px Arial")
+      .text(function(d,i) { return dataGo[i]; });
 var pieGender = groupGender.selectAll(".arc")
         	.data(pie(dataGender))
         	.enter()
@@ -197,16 +250,38 @@ var pieGender = groupGender.selectAll(".arc")
           .attr("d",arcGender);
 
 
-        pieGender.append("text")                                     //add a label to each slice
-                        .attr("transform", function(d) {                    //set the label's origin to the center of the arc
-                        //we have to make sure to set these before calling arc.centroid
-                        d.innerRadius = 0;
-                        d.outerRadius = 100;
-                        return "translate(" + arcGender.centroid(d) + ")";        //this gives us a pair of coordinates like [50, 50]
-                    })
-                    .attr("text-anchor", "middle")                          //center the text on it's origin
+       pieGender.append("text")                                     //add a label to each slice
+                    .attr("transform", function(d) {
+          var c = arcGender.centroid(d),
+            x = c[0],
+            y = c[1],
+            h = Math.sqrt(x*x + y*y);
+            console.log(c);
+          return "translate(" + (x/h * (70+10)) +  ',' +
+            (y/h * (70+10)) +  ")";
+        })
+                     .attr("text-anchor", function(d) {
+        return (d.endAngle + d.startAngle)/2 > Math.PI ?
+            "end" : "start";
+      })
+                    .style("fill", "Purple")                         //center the text on it's origin
                     .text(function(d, i) { return genderLabel[i]; });
-                    
+       // Add a magnitude value to the larger arcs, translated to the arc centroid and rotated.
+    pieGender.filter(function(d) { return d.endAngle - d.startAngle > .2; }).append("text")
+      .attr("dy", ".35em")
+      .attr("text-anchor", "middle")
+      //.attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")rotate(" + angle(d) + ")"; })
+      .attr("transform", function(d) { //set the label's origin to the center of the arc
+        //we have to make sure to set these before calling arc.centroid
+        d.outerRadius = 70; // Set Outer Coordinate
+        d.innerRadius = 70/2 ; // Set Inner Coordinate
+        return "translate(" + arcGender.centroid(d) + ")rotate(" + angle(d) + ")";
+      })
+      .style("fill", "White")
+      .style("font", "bold 12px Arial")
+      .text(function(d,i) { return dataGender[i]; }); 
+      
+        
          var pieIncome = groupIncome.selectAll(".arc")
         	.data(pie(dataIncome))
         	.enter()
@@ -218,16 +293,37 @@ var pieGender = groupGender.selectAll(".arc")
           .attr("d",arcIncome);
 
 
-        pieIncome.append("text")                                     //add a label to each slice
-                        .attr("transform", function(d) {                    //set the label's origin to the center of the arc
-                        //we have to make sure to set these before calling arc.centroid
-                        d.innerRadius = 0;
-                        d.outerRadius = 100;
-                        return "translate(" + arcIncome.centroid(d) + ")";        //this gives us a pair of coordinates like [50, 50]
-                    })
-                    .attr("text-anchor", "middle")                          //center the text on it's origin
+ pieIncome.append("text")                                     //add a label to each slice
+                    .attr("transform", function(d) {
+          var c = arcIncome.centroid(d),
+            x = c[0],
+            y = c[1],
+            h = Math.sqrt(x*x + y*y);
+            console.log(c);
+          return "translate(" + (x/h * (70+10)) +  ',' +
+            (y/h * (70+10)) +  ")";
+        })
+                     .attr("text-anchor", function(d) {
+        return (d.endAngle + d.startAngle)/2 > Math.PI ?
+            "end" : "start";
+      })
+                    .style("fill", "Purple")                         //center the text on it's origin
                     .text(function(d, i) { return incomeLabel[i]; });
-                    
+       // Add a magnitude value to the larger arcs, translated to the arc centroid and rotated.
+    pieIncome.filter(function(d) { return d.endAngle - d.startAngle > .2; }).append("text")
+      .attr("dy", ".35em")
+      .attr("text-anchor", "middle")
+      //.attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")rotate(" + angle(d) + ")"; })
+      .attr("transform", function(d) { //set the label's origin to the center of the arc
+        //we have to make sure to set these before calling arc.centroid
+        d.outerRadius = 70; // Set Outer Coordinate
+        d.innerRadius = 70/2 ; // Set Inner Coordinate
+        return "translate(" + arcIncome.centroid(d) + ")rotate(" + angle(d) + ")";
+      })
+      .style("fill", "White")
+      .style("font", "bold 12px Arial")
+      .text(function(d,i) { return dataIncome[i]; });
+      
             var pieRaceImpact = groupRaceImpact.selectAll(".arc")
         	.data(pie(dataRaceImpact))
         	.enter()
@@ -241,15 +337,38 @@ var pieGender = groupGender.selectAll(".arc")
           .attr("d",arcRaceImpact);
 
 
-        pieRaceImpact.append("text")                                     //add a label to each slice
-                        .attr("transform", function(d) {                    //set the label's origin to the center of the arc
-                        //we have to make sure to set these before calling arc.centroid
-                        d.innerRadius = 0;
-                        d.outerRadius = 100;
-                        return "translate(" + arcRaceImpact.centroid(d) + ")";        //this gives us a pair of coordinates like [50, 50]
-                    })
-                    .attr("text-anchor", "middle")                          //center the text on it's origin
+       pieRaceImpact.append("text")                                     //add a label to each slice
+                    .attr("transform", function(d) {
+          var c = arcRaceImpact.centroid(d),
+            x = c[0],
+            y = c[1],
+            h = Math.sqrt(x*x + y*y);
+            console.log(c);
+          return "translate(" + (x/h * (70+10)) +  ',' +
+            (y/h * (70+10)) +  ")";
+        })
+                     .attr("text-anchor", function(d) {
+        return (d.endAngle + d.startAngle)/2 > Math.PI ?
+            "end" : "start";
+      })
+                    .style("fill", "Purple")                         //center the text on it's origin
                     .text(function(d, i) { return raceImpactLabel[i]; });
+                    
+       // Add a magnitude value to the larger arcs, translated to the arc centroid and rotated.
+    pieRaceImpact.filter(function(d) { return d.endAngle - d.startAngle > .2; }).append("text")
+      .attr("dy", ".35em")
+      .attr("text-anchor", "middle")
+      //.attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")rotate(" + angle(d) + ")"; })
+      .attr("transform", function(d) { //set the label's origin to the center of the arc
+        //we have to make sure to set these before calling arc.centroid
+        d.outerRadius = 70; // Set Outer Coordinate
+        d.innerRadius = 70/2 ; // Set Inner Coordinate
+        return "translate(" + arcRaceImpact.centroid(d) + ")rotate(" + angle(d) + ")";
+      })
+      .style("fill", "White")
+      .style("font", "bold 12px Arial")
+      .text(function(d,i) { return dataRaceImpact[i]; });
+      
                     
              var pieGoal = groupGoal.selectAll(".arc")
         	.data(pie(dataGoal))
@@ -264,16 +383,37 @@ var pieGender = groupGender.selectAll(".arc")
           .attr("d",arcGoal);
 
 
-        pieGoal.append("text")                                     //add a label to each slice
-                        .attr("transform", function(d) {                    //set the label's origin to the center of the arc
-                        //we have to make sure to set these before calling arc.centroid
-                        d.innerRadius = 0;
-                        d.outerRadius = 100;
-                        return "translate(" + arcGoal.centroid(d) + ")";        //this gives us a pair of coordinates like [50, 50]
-                    })
-                    .attr("text-anchor", "middle")                          //center the text on it's origin
+       pieGoal.append("text")                                     //add a label to each slice
+                    .attr("transform", function(d) {
+          var c = arcGoal.centroid(d),
+            x = c[0],
+            y = c[1],
+            h = Math.sqrt(x*x + y*y);
+            console.log(c);
+          return "translate(" + (x/h * (70+10)) +  ',' +
+            (y/h * (70+10)) +  ")";
+        })
+                     .attr("text-anchor", function(d) {
+        return (d.endAngle + d.startAngle)/2 > Math.PI ?
+            "end" : "start";
+      })
+                    .style("fill", "Purple")                         //center the text on it's origin
                     .text(function(d, i) { return goalLabel[i]; });
-                    
+       pieGoal.filter(function(d) { return d.endAngle - d.startAngle > .2; }).append("text")
+      .attr("dy", ".35em")
+      .attr("text-anchor", "middle")
+      //.attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")rotate(" + angle(d) + ")"; })
+      .attr("transform", function(d) { //set the label's origin to the center of the arc
+        //we have to make sure to set these before calling arc.centroid
+        d.outerRadius = 70; // Set Outer Coordinate
+        d.innerRadius = 70/2 ; // Set Inner Coordinate
+        return "translate(" + arcGoal.centroid(d) + ")rotate(" + angle(d) + ")";
+      })
+      .style("fill", "White")
+      .style("font", "bold 12px Arial")
+      .text(function(d,i) { return dataGoal[i]; }); 
+      
+                      
          var pieDate = groupDate.selectAll(".arc")
         	.data(pie(dataDate))
         	.enter()
@@ -288,14 +428,19 @@ var pieGender = groupGender.selectAll(".arc")
 
 
         pieDate.append("text")                                     //add a label to each slice
-                        .attr("transform", function(d) {                    //set the label's origin to the center of the arc
-                        //we have to make sure to set these before calling arc.centroid
-                        d.outerRadius = 220;
-                        d.innerRadius = 215;
-                        
-                        return "translate(" + (arcDate.centroid(d)+150) + ")";        //this gives us a pair of coordinates like [50, 50]
-                    })
-                    .attr("text-anchor", "middle") 
+                    .attr("transform", function(d) {
+          var c = arcDate.centroid(d),
+            x = c[0],
+            y = c[1],
+            h = Math.sqrt(x*x + y*y);
+            console.log(c);
+          return "translate(" + (x/h * (70+10)) +  ',' +
+            (y/h * (70+10)) +  ")";
+        })
+                     .attr("text-anchor", function(d) {
+        return (d.endAngle + d.startAngle)/2 > Math.PI ?
+            "end" : "start";
+      })
                     .style("fill", "Purple")                         //center the text on it's origin
                     .text(function(d, i) { return dateLabel[i]; });
                     
@@ -336,6 +481,20 @@ var pieGender = groupGender.selectAll(".arc")
                     })
                     .attr("text-anchor", "middle")                          //center the text on it's origin
                     .text(function(d, i) { return fieldLabel[i]; });
+                    
+    pieField.filter(function(d) { return d.endAngle - d.startAngle > .2; }).append("text")
+      .attr("dy", ".35em")
+      .attr("text-anchor", "middle")
+      //.attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")rotate(" + angle(d) + ")"; })
+      .attr("transform", function(d) { //set the label's origin to the center of the arc
+        //we have to make sure to set these before calling arc.centroid
+        d.outerRadius = 70; // Set Outer Coordinate
+        d.innerRadius = 70/2 ; // Set Inner Coordinate
+        return "translate(" + arcField.centroid(d) + ")rotate(" + angle(d) + ")";
+      })
+      .style("fill", "White")
+      .style("font", "bold 12px Arial")
+      .text(function(d,i) { return dataField[i]; });
 
 // Toutes les informations du profil
 
