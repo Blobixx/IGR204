@@ -472,15 +472,23 @@ var pieGender = groupGender.selectAll(".arc")
           .attr("d",arcField);
 
 
-        pieField.append("text")                                     //add a label to each slice
-                        .attr("transform", function(d) {                    //set the label's origin to the center of the arc
-                        //we have to make sure to set these before calling arc.centroid
-                        d.innerRadius = 0;
-                        d.outerRadius = 100;
-                        return "translate(" + arcField.centroid(d) + ")";        //this gives us a pair of coordinates like [50, 50]
-                    })
-                    .attr("text-anchor", "middle")                          //center the text on it's origin
+    pieField.append("text")                                     //add a label to each slice
+                    .attr("transform", function(d) {
+          var c = arcField.centroid(d),
+            x = c[0],
+            y = c[1],
+            h = Math.sqrt(x*x + y*y);
+            console.log(c);
+          return "translate(" + (x/h * (70+10)) +  ',' +
+            (y/h * (70+10)) +  ")";
+        })
+                     .attr("text-anchor", function(d) {
+        return (d.endAngle + d.startAngle)/2 > Math.PI ?
+            "end" : "start";
+      })
+                    .style("fill", "Purple")                         //center the text on it's origin
                     .text(function(d, i) { return fieldLabel[i]; });
+                    
                     
     pieField.filter(function(d) { return d.endAngle - d.startAngle > .2; }).append("text")
       .attr("dy", ".35em")
