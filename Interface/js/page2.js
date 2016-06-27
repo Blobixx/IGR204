@@ -19,6 +19,7 @@ var svg = d3.select("#tab-2")
     .attr("height", height + margin.top + margin.bottom)
 	.attr('viewBox', '0, 0, ' + width + ', ' + height);
 
+	/*
 // Toutes les informations du profil
 svg.append("text").attr("x", 0).attr("y", 0).attr("class", "sousTitre").text("Match_es :")
 
@@ -28,7 +29,7 @@ svg.append("text").attr("x", 0).attr("y", 60).attr("class", "sousTitre").text("C
 
 svg.append("text").attr("x", 0).attr("y", 90).attr("class", "sousTitre").text("Round :")
 
-svg.append("text").attr("x", 0).attr("y", 120).attr("class", "sousTitre").text("Mode :")
+svg.append("text").attr("x", 0).attr("y", 120).attr("class", "sousTitre").text("Mode :")*/
 
 
 //vertical gauche
