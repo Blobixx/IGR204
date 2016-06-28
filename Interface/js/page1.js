@@ -18,38 +18,57 @@ var svg;
 svg = d3.select('#tab-1')
     .append('svg')
     .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
+    .attr("height", height + margin.top + margin.bottom+10)
     .attr('viewBox', '0, 0, ' + width + ', ' + height);
 
 //Design de l'onglet
 
-var dataRaceImpact = [58, 22, 15,5];
-var raceImpactLabel = ["Not important", "Important", "Not tell"];
+
+var dataRaceImpact = [56, 20, 19,5];
+var raceImpactLabel = ["Not important", "Important","Very Important", "Not tell"];
 
 var dataGender = [49,51];
 var genderLabel = ["Femme","Homme"];
 
 var dataRace = [5, 56, 8,24,7];
 var raceLabel = ["Black/African American", "European/Caucasian-American",
- "Latino/Hispanic American ","Asian/Pacific Islander/Asian-American","Other"];
+ "Latino/Hispanic American ","Islander/Asian-American","Other"];
 
-var dataDate = [40, 50, 80];
-var dateLabel = ["Several times a year", "once a week", "once a month"];
+var dataDate = [25,24,19,18,9,4,1];
+var dateLabel = ["Several times a year","Twice a month","Almost never","Once a month",
+"Once a week","Twice a week",""];
 
-var dataGo = [10, 50, 80];
-var goLabel = ["black", "white", "asian"];
+var dataGo = [31,36,23,5,2,2,1];
+var goLabel =  ["Several times a week","Twice a week","Once a week",
+"Twice a month","","",""];
 
-var dataAge = [10, 50, 80];
-var ageLabel = ["black", "white", "asian"];
+var dataAge = [65, 17, 15,3];
+var ageLabel = ["20-25", "25-30", "30-35","Autre"];
 
-var dataGoal = [10, 50, 80];
-var goalLabel = ["black", "white", "asian"];
+var dataGoal = [41,36,8,4,6,5];
+var goalLabel = ["Seemed like a fun night out",
+        "To meet new people" ,
+        "To get a date" ,
+        "Looking for a serious relationship" ,
+        "To say I did it" ,
+        " " ];
+//Field = career du csv
+var dataField = [28,26,9,8,7,7,3,5,3,5];
+var fieldLabel = [ "Academic/Research", 
 
-var dataField = [10, 50, 80];
-var fieldLabel = ["black", "white", "asian"];
 
-var dataIncome = [10, 50, 80];
-var incomeLabel = ["black", "white", "asian"];
+         
+         "Banking/Consulting/Finance/Marketing",
+          "Creative Arts/Entertainment",
+          "Lawyer", 
+           "International/Humanitarian Affairs",
+            "Other",
+       
+         
+         "Doctor/Medicine",
+         "Engineer" 
+       
+        ];
 
 var color = d3.scale.category20();
 var pie = d3.layout.pie()
@@ -57,14 +76,13 @@ var pie = d3.layout.pie()
         return d;
     });
 
-var groupRace=svg.append("g").attr("transform","translate(250, 80)");
+var groupRace=svg.append("g").attr("transform","translate(250, 77)");
 var groupAge=svg.append("g").attr("transform","translate(250, 80)");
 var groupGender=svg.append("g").attr("transform","translate(250, 80)");
-var groupIncome=svg.append("g").attr("transform","translate(250, 80)");
 var groupRaceImpact=svg.append("g").attr("transform","translate(250, 80)");
 var groupGoal=svg.append("g").attr("transform","translate(250, 80)");
 var groupDate=svg.append("g").attr("transform","translate(250, 80)");
-var groupGo=svg.append("g").attr("transform","translate(250, 80)");
+var groupGo=svg.append("g").attr("transform","translate(250, 77)");
 var groupField=svg.append("g").attr("transform","translate(250, 80)");
 
 var arcRace = d3.svg.arc()
@@ -78,9 +96,7 @@ var arcGoal = d3.svg.arc()
     .innerRadius(0)
     .outerRadius(70);
 
-var arcIncome = d3.svg.arc()
-    .innerRadius(0)
-    .outerRadius(70);
+
 
 var arcRaceImpact=d3.svg.arc()
     .innerRadius(0)
@@ -282,47 +298,7 @@ var pieGender = groupGender.selectAll(".arc")
       .text(function(d,i) { return dataGender[i]; }); 
       
         
-         var pieIncome = groupIncome.selectAll(".arc")
-        	.data(pie(dataIncome))
-        	.enter()
-        	.append("g")
-        	.attr("class","arc");
-        	
-        pieIncome.style("opacity", 0).append("path")
-          .style("fill",function(d,i){return color(i) ;})
-          .attr("d",arcIncome);
-
-
- pieIncome.append("text")                                     //add a label to each slice
-                    .attr("transform", function(d) {
-          var c = arcIncome.centroid(d),
-            x = c[0],
-            y = c[1],
-            h = Math.sqrt(x*x + y*y);
-            console.log(c);
-          return "translate(" + (x/h * (70+10)) +  ',' +
-            (y/h * (70+10)) +  ")";
-        })
-                     .attr("text-anchor", function(d) {
-        return (d.endAngle + d.startAngle)/2 > Math.PI ?
-            "end" : "start";
-      })
-                    .style("fill", "Purple")                         //center the text on it's origin
-                    .text(function(d, i) { return incomeLabel[i]; });
-       // Add a magnitude value to the larger arcs, translated to the arc centroid and rotated.
-    pieIncome.filter(function(d) { return d.endAngle - d.startAngle > .2; }).append("text")
-      .attr("dy", ".35em")
-      .attr("text-anchor", "middle")
-      //.attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")rotate(" + angle(d) + ")"; })
-      .attr("transform", function(d) { //set the label's origin to the center of the arc
-        //we have to make sure to set these before calling arc.centroid
-        d.outerRadius = 70; // Set Outer Coordinate
-        d.innerRadius = 70/2 ; // Set Inner Coordinate
-        return "translate(" + arcIncome.centroid(d) + ")rotate(" + angle(d) + ")";
-      })
-      .style("fill", "White")
-      .style("font", "bold 12px Arial")
-      .text(function(d,i) { return dataIncome[i]; });
+       
       
             var pieRaceImpact = groupRaceImpact.selectAll(".arc")
         	.data(pie(dataRaceImpact))
