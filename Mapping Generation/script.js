@@ -1,8 +1,8 @@
 function save() {
 
-    var countX = 10; //cells by x
+    var countX = 17; //cells by x
     var countY = 10; //cells by y
-    var mapWidth = 100;
+    var mapWidth = 360;
     var mapHeight = 100;
     var cellWidth = mapWidth / countX;
     var cellHeight = mapHeight / countY;
