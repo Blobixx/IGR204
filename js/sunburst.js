@@ -1,29 +1,29 @@
 var width = 960,
-    height = 400,
+    height = 300,
     widthDiv = width/2.7,
     radius = Math.min(widthDiv, 750/3) / 2,
     color = d3.scale.category20c();
 
 
-var svg_sb = d3.select("#sun_burst").append("svg")
+var svg_sb = d3.select("#sun_burst1").append("svg")
     .attr("width", widthDiv)
     .attr("height", height)
   .append("g")
     .attr("transform", "translate(" + widthDiv / 2 + "," + height * .42 + ")");
 
-var svg_sb_s = d3.select("#sun_burst").append("svg")
+var svg_sb_s = d3.select("#sun_burst1").append("svg")
     .attr("width", widthDiv)
     .attr("height", height)
   .append("g")
     .attr("transform", "translate(" + widthDiv /2 + "," + height * .42 + ")");
 
-var svg_sb_2 = d3.select("#sun_burst").append("svg")
+var svg_sb_2 = d3.select("#sun_burst2").append("svg")
     .attr("width", widthDiv)
     .attr("height", height)
   .append("g")
     .attr("transform", "translate(" + widthDiv /2 + "," + height * .42 + ")");
 
-var svg_sb_3 = d3.select("#sun_burst").append("svg")
+var svg_sb_3 = d3.select("#sun_burst2").append("svg")
     .attr("width", widthDiv)
     .attr("height", height)
   .append("g")
