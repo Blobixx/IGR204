@@ -61,7 +61,7 @@ var partition = d3.layout.partition()
     .size([2 * Math.PI, radius * radius])
     .value(function(d) { return 1; });
 
-var arc = d3.svg_sb.arc()
+var arc = d3.svg.arc()
     .startAngle(function(d) { return d.x; })
     .endAngle(function(d) { return d.x + d.dx; })
     .innerRadius(function(d) { return Math.sqrt(d.y); })
