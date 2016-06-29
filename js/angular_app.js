@@ -106,34 +106,106 @@ app.directive("globe", function() {
 					
 					// Profile
                     d3.select("#id").html("Id: " + d.properties.id);
-                    d3.select("#gender").html("Gender: " + d.properties.gender);
+                    
+                    if(d.properties.gender==0) {
+                        d3.select("#gender").html("Gender : Female");
+                    }
+                    else {d3.select("#gender").html("Gender : Male");}
+
                     d3.select("#age").html("Age: " + d.properties.age);
-					d3.select("#race").html("Race: " + d.properties.race);
-					d3.select("#race_impact").html("Race Impact: " + d.properties.age);
-					d3.select("#goal").html("Goal: " + d.properties.goal);
-					d3.select("#date_frequency").html("Date frequency: " + d.properties.date);
-					d3.select("#go_out_frequency").html("Go out frequency: " + d.properties.go_out);
+
+                    if (d.properties.race==1) 
+                        {d3.select("#race").html("Race : Black/African American");}
+                    else if (d.properties.race==2)
+                        {d3.select("#race").html("Race : European/Caucasian-American");}
+                    else if (d.properties.race==3)
+                        {d3.select("#race").html("Race : Latino/Hispanic American");}
+                    else if (d.properties.race==4)
+                        {d3.select("#race").html("Race : Asian/Pacific American ");}
+                    else if (d.properties.race==5)
+                        {d3.select("#race").html("Race : Other ");}
+                    
+					d3.select("#race_impact").html("Race Impact : Not importante");
+
+                    if (d.properties.goal==1) 
+                        {d3.select("#goal").html("Goal : Seemed like a fun night out");}
+                    else if (d.properties.goal==2)
+                        {d3.select("#goal").html("Goal : To meet new people");}
+                    else if (d.properties.goal==3)
+                        {d3.select("#goal").html("Goal : To get a date");}
+                    else if (d.properties.goal==4)
+                        {d3.select("#goal").html("Goal : Looking for a serious relationship ");}
+                    else if (d.properties.goal==5)
+                        {d3.select("#goal").html("Goal : To say I did it ");}
+                    else if (d.properties.goal==6)
+                        {d3.select("#goal").html("Goal : Other ");}
+
+
+                    if (d.properties.date==1) 
+                        {d3.select("#date_frequency").html("Date frequency : Several times a week");}
+                    else if (d.properties.date==2)
+                        {d3.select("#date_frequency").html("Date frequency : Twice a week");}
+                    else if (d.properties.date==3)
+                        {d3.select("#date_frequency").html("Date frequency : Once a week");}
+                    else if (d.properties.date==4)
+                        {d3.select("#date_frequency").html("Date frequency : Twice a month ");}
+                    else if (d.properties.date==5)
+                        {d3.select("#date_frequency").html("Date frequency : Once a month");}
+                    else if (d.properties.date==6)
+                        {d3.select("#date_frequency").html("Date frequency : Several times a year ");}
+                    else if (d.properties.date==7)
+                        {d3.select("#date_frequency").html("Date frequency : Almost never ");}
+
+                     if (d.properties.go_out==1) 
+                        {d3.select("#go_out_frequency").html("Go out frequency : Several times a week");}
+                    else if (d.properties.go_out==2)
+                        {d3.select("#go_out_frequency").html("Go out frequency : Twice a week");}
+                    else if (d.properties.go_out==3)
+                        {d3.select("#go_out_frequency").html("Go out frequency : Once a week");}
+                    else if (d.properties.go_out==4)
+                        {d3.select("#go_out_frequency").html("Go out frequency : Twice a month ");}
+                    else if (d.properties.go_out==5)
+                        {d3.select("#go_out_frequency").html("Go out frequency : Once a month ");}
+                    else if (d.properties.go_out==6)
+                        {d3.select("#go_out_frequency").html("Go out frequency : Several times a year ");}
+                    else if (d.properties.go_out==7)
+                        {d3.select("#go_out_frequency").html("Go out frequency : Almost never ");}
+
 					d3.select("#field").html("Field: " + d.properties.field);
 					
 					//Partner
+                    //if(d.properties.age_o==0)
 					d3.select("#age_partner").html(d.properties.age_o);
-                    d3.select("#race_partner").html( d.properties.race_o);
+
+                    if (d.properties.race_o==1) 
+                        {d3.select("#race_partner").html("Black/African American");}
+                    else if (d.properties.race_o==2)
+                        {d3.select("#race_partner").html("European/Caucasian-American");}
+                    else if (d.properties.race_o==3)
+                        {d3.select("#race_partner").html("Latino/Hispanic American");}
+                    else if (d.properties.race_o==4)
+                        {d3.select("#race_partner").html("Asian/Pacific American ");}
+                    else if (d.properties.race_o==5)
+                        {d3.select("#race_partner").html("Other ");}
+
+ 			
+                    d3.select("#att_pref").html(Math.trunc(d.properties.pf_o_att) + "%");
+					d3.select("#sinc_pref").html(Math.trunc(d.properties.pf_o_sin) + "%");
+					d3.select("#amb_pref").html(Math.trunc(d.properties.pf_o_amb) + "%");
+					d3.select("#int_pref").html(Math.trunc(d.properties.pf_o_int) + "%");
+					d3.select("#sh_pref").html(Math.trunc(d.properties.pf_o_sha) + "%");
+					d3.select("#fun_pref").html(Math.trunc(d.properties.pf_o_fun) + "%");
 					
-                    d3.select("#att_pref").html(d.properties.pf_o_att);
-					d3.select("#sinc_pref").html(d.properties.pf_o_sin);
-					d3.select("#amb_pref").html(d.properties.pf_o_amb);
-					d3.select("#int_pref").html(d.properties.pf_o_int);
-					d3.select("#sh_pref").html(d.properties.pf_o_sha);
-					d3.select("#fun_pref").html(d.properties.pf_o_fun);
+					d3.select("#att_note").html(Math.trunc(d.properties.attr_o)+"/10");
+					d3.select("#sinc_note").html(Math.trunc(d.properties.sinc_o)+"/10");
+					d3.select("#amb_note").html(Math.trunc(d.properties.amb_o)+"/10");
+					d3.select("#int_note").html(Math.trunc(d.properties.intel_o)+"/10");
+					d3.select("#sh_note").html(Math.trunc(d.properties.shar_o)+"/10");
+					d3.select("#fun_note").html(Math.trunc(d.properties.fun_o)+"/10");
 					
-					d3.select("#att_note").html(d.properties.attr_o);
-					d3.select("#sinc_note").html(d.properties.sinc_o);
-					d3.select("#amb_note").html(d.properties.amb_o);
-					d3.select("#int_note").html(d.properties.intel_o);
-					d3.select("#sh_note").html(d.properties.shar_o);
-					d3.select("#fun_note").html(d.properties.fun_o);
-					
-					d3.select("#match").html("Match: " + d.properties.match);
+                    if (d.properties.match==0) {
+					    d3.select("#match").html("2 peoples matched : No");}
+                    else {d3.select("#match").html("2 peoples matched : Yes ");}
 					
                     //setTimeout(function() {}, 1500);
                 });

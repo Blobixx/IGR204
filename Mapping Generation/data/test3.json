@@ -1,0 +1,33 @@
+{
+    "type": "FeatureCollection",
+    "features": [{
+        "type": "Feature",
+        "id": "IND",
+        "properties": {
+            "name": "India"
+        },
+        "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+                [
+                   [100.0, 0.0], [101.0, 0.0], [101.0, 1.0], [100.0, 1.0], [100.0, 0.0] 
+                ]
+            ]
+        }
+    },
+	{
+        "type": "Feature",
+        "id": "FR",
+        "properties": {
+            "name": "France"
+        },
+        "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+                [
+					[20, 2], [40, 2], [40, 4], [20, 4], [20, 2]
+                ]
+            ]
+        }
+    }]
+}
