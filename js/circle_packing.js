@@ -1,5 +1,5 @@
 var margin = 20,
-    diameter = 500;
+    diameter = 650;
 
 var color = d3.scale.linear()
     .domain([-1, 5])
