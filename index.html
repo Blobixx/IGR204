@@ -26,6 +26,7 @@
       <script src="../assets/js/html5shiv.js"></script>
     <![endif]-->
     <link rel="stylesheet" href="css/circle_packing.css">
+	<link rel="stylesheet" href="css/sunburst.css">
 </head>
 
 <body style="background: #EDECF2">
@@ -162,14 +163,113 @@
         </div>
     </section>
 	
-	<section id="criteria" class="section dark" style="height:700px">
+	<section id="criteria" class="section dark" style="height:1000px">
         <div class="container animated hiding" data-animation="fadeInDown">
             <div style="height:30px">
             </div>
             <h1>Criteria evolution through waves</h1>
             <div id="sun_burst">
             </div>
-        </div>
+            <div id="legend-block">
+                <table id="table-legend">
+                    <tr>
+                        <td>Questions</td>
+                        <td class="legend">
+                            <table>
+                                <tr>
+                                    <td class="color" id="lookFor"></td>
+                                    <td class="label_legend">What do you look for in the opposite sex ?</td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="legend">
+                            <table>
+                                <tr>
+                                    <td class="color" id="fellowLookFor"></td>
+                                    <td class="label_legend">What do you think your fellow men/women looks for?</td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="legend">
+                            <table>
+                                <tr>
+                                    <td class="color" id="oppLookFor"></td>
+                                    <td class="label_legend">What do you think the opposite sex looks for ?</td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="legend">
+                            <table>
+                                <tr>
+                                    <td class="color" id="measUp"></td>
+                                    <td class="label_legend">How do you think you measure up ?</td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="legend">
+                            <table>
+                                <tr>
+                                    <td class="color" id="perc"></td>
+                                    <td class="label_legend">How do you think others perceive you ?</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Answers</td>
+                        <td class="legend">
+                            <table>
+                                <tr>
+                                    <td class="color" id="shar"></td>
+                                    <td class="label_legend">Shared</td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="legend">
+                            <table>
+                                <tr>
+                                    <td class="color" id="amb"></td>
+                                    <td class="label_legend">Ambitious</td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="legend">
+                            <table>
+                                <tr>
+                                    <td class="color" id="fun"></td>
+                                    <td class="label_legend">Fun</td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="legend">
+                            <table>
+                                <tr>
+                                    <td class="color" id="int"></td>
+                                    <td class="label_legend">Intelligent</td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="legend">
+                            <table>
+                                <tr>
+                                    <td class="color" id="sinc"></td>
+                                    <td class="label_legend">Sincere</td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="legend">
+                            <table>
+                                <tr>
+                                    <td class="color" id="attr"></td>
+                                    <td class="label_legend">Attractive</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+
+                </table>
+            </div>
     </section>
 
     <section id="about" class="section dark" style="height:700px">
@@ -200,5 +300,7 @@
 
 <script type="text/javascript" src="js/circle_packing.js" style="display:none"> </script>
 <script type="text/javascript" src="js/d3/d3.layout.js"></script>
+
+<script type="text/javascript" src="js/sunburst.js"></script>
 
 </html>

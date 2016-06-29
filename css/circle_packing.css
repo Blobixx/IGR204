@@ -1,25 +1,20 @@
 .node {
   cursor: pointer;
-    stroke: black;
-
 }
 
 .node:hover {
-  stroke: black;
+  stroke: #0955CC;
   stroke-width: 2.5px;
 }
 
 .node--leaf {
   fill: #0955CC;
-  stroke: black;
-  stroke-width: 1.5px;
 }
 
 .label {
   font: 15px "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight : bold ;
   text-anchor: middle;
-  text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
 }
 
 .label,

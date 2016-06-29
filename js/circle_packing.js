@@ -1,5 +1,5 @@
 var margin = 20,
-    diameter = 650;
+    diameter = 550;
 
 var color = d3.scale.linear()
     .domain([-1, 5])
@@ -40,7 +40,7 @@ d3.json("data/circle_packing.json", function(error, root) {
       .data(nodes)
     .enter().append("text")
       .attr("class", "label")
-      .style("fill-opacity", function(d) { return d.parent === root ? 1 : 0; })
+      .style("fill", "white")
       .style("display", function(d) { return d.parent === root ? "inline" : "none"; })
       .style("size", function(d) { return size(d.depth);})
       .text(function(d) { return d.name + "  " + d.size + " " + d.pourcentage ; });
