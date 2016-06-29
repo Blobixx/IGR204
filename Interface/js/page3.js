@@ -16,7 +16,7 @@ var margin = {
 var svg = d3.select("#tab-3").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom);
-
+/*
 var ligne = svg.append('line')
     .attr({
         x1: 550,
@@ -418,3 +418,4 @@ svg.append("text").attr("x", 745).attr("y", 740).attr("class", "sousTitre3").tex
 svg.append("text").attr("x", 745).attr("y", 780).attr("class", "sousTitre3").text("Probability");
 svg.append("text").attr("x", 745).attr("y", 820).attr("class", "sousTitre3").text("Met");
 svg.append("text").attr("x", 745).attr("y", 860).attr("class", "sousTitre3").text("Decision");
+*/
