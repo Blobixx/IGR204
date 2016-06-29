@@ -4,13 +4,13 @@ path {
 }
 
 .background {
-  fill: white;
+  fill: none;
   stroke-width: .8px;
-  stroke: black;
+  stroke: none;
 }
 
 .graticule {
-    stroke: white;
+    stroke: none;
     stroke-width: .5px;
 }
 
@@ -25,11 +25,6 @@ path {
 }
 
 .square .overlay {
-    fill: blue;
-    fill-opacity: 0;
-}
-
-.square .overlay {
-    fill: orange;
-    fill-opacity: 0;
+    fill: #7AEBFF;
+    fill-opacity: 0.2;
 }

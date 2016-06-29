@@ -6,4 +6,9 @@
 #tabs-container {
 	float: right;
 	width: 50%;
+	margin-top: 40px;
+}
+
+#circle_packing {
+	text-align: center;
 }

@@ -24,7 +24,6 @@ app.directive("globe", function() {
             height = 500 + margin.top + margin.bottom,
             rotate = [10, -10],
             velocity = [.003, -.001],
-            time = Date.now(),
             r = 100,
             p = Math.PI * 2;
 
@@ -75,6 +74,8 @@ app.directive("globe", function() {
 
         d3.json(mapJson, function(error, json) {
 
+            console.log(error);
+
             squares = json.features;
             squareSet = drawFeatureSet('square', squares);
 
@@ -88,20 +89,53 @@ app.directive("globe", function() {
                 .append('g')
                 .attr('class', className);
 
+            /*
             set.append('path')
                 .attr('class', 'land')
                 .attr('d', path);
+			*/
 
             set.append('path')
                 .attr('class', 'overlay')
                 .attr('d', path)
                 .on('click', function(d) {
-                    rotateToFocusOn(d);
-                    setTimeout(function() {
-						d3.select("#id").html("Id: " + d.properties.id);
-						d3.select("#gender").html("Gender: " + d.properties.gender);
-						d3.select("#age").html("Age: " + d.properties.age);
-                    }, 1500);
+					d3.selectAll(".overlay").style("fill", "#7AEBFF");
+                    d3.select(this).style("fill", "red");
+					
+					rotateToFocusOn(d);
+					
+					// Profile
+                    d3.select("#id").html("Id: " + d.properties.id);
+                    d3.select("#gender").html("Gender: " + d.properties.gender);
+                    d3.select("#age").html("Age: " + d.properties.age);
+					d3.select("#race").html("Race: " + d.properties.race);
+					d3.select("#race_impact").html("Race Impact: " + d.properties.age);
+					d3.select("#goal").html("Goal: " + d.properties.goal);
+					d3.select("#date_frequency").html("Date frequency: " + d.properties.date);
+					d3.select("#go_out_frequency").html("Go out frequency: " + d.properties.go_out);
+					d3.select("#field").html("Field: " + d.properties.field);
+					
+					//Partner
+					d3.select("#age_partner").html(d.properties.age_o);
+                    d3.select("#race_partner").html( d.properties.race_o);
+					
+                    d3.select("#att_pref").html(d.properties.pf_o_att);
+					d3.select("#sinc_pref").html(d.properties.pf_o_sin);
+					d3.select("#amb_pref").html(d.properties.pf_o_amb);
+					d3.select("#int_pref").html(d.properties.pf_o_int);
+					d3.select("#sh_pref").html(d.properties.pf_o_sha);
+					d3.select("#fun_pref").html(d.properties.pf_o_fun);
+					
+					d3.select("#att_note").html(d.properties.attr_o);
+					d3.select("#sinc_note").html(d.properties.sinc_o);
+					d3.select("#amb_note").html(d.properties.amb_o);
+					d3.select("#int_note").html(d.properties.intel_o);
+					d3.select("#sh_note").html(d.properties.shar_o);
+					d3.select("#fun_note").html(d.properties.fun_o);
+					
+					d3.select("#match").html("Match: " + d.properties.match);
+					
+                    //setTimeout(function() {}, 1500);
                 });
 
             return set;
