@@ -99,8 +99,8 @@ app.directive("globe", function() {
                 .attr('class', 'overlay')
                 .attr('d', path)
                 .on('click', function(d) {
-					d3.selectAll(".overlay").style("fill", "#7AEBFF");
-                    d3.select(this).style("fill", "red");
+					d3.selectAll(".overlay").style("fill", "#3182BD");
+                    d3.select(this).style("fill", "##0955CC");
 					
 					rotateToFocusOn(d);
 					
