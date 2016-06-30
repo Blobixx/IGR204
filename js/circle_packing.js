@@ -12,14 +12,14 @@ var size = d3.scale.linear()
     .interpolate(d3.interpolateHcl);
 
 var pack = d3.layout.pack()
-.padding(2)
+    .padding(2)
     .size([diameter - margin, diameter - margin])
     .value(function(d) { return d.size; })
 
 var svg = d3.select("#circle_packing").append("svg")
     .attr("width", diameter)
     .attr("height", diameter)
-  .append("g")
+    .append("g")
     .attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
 
 d3.json("data/circle_packing.json", function(error, root) {
