@@ -35,26 +35,26 @@ var svg_sb_3 = d3.select("#sun_burst2").append("svg")
 var text = svg_sb.append("text")
               .attr("text-anchor","middle")
               .style("fill","#666")
-              .text("1")
-              .attr("font-size","32");
+              .text("Before wave")
+              .attr("font-size","20");
 
 var text_s = svg_sb_s.append("text")
               .attr("text-anchor","middle")
               .style("fill","#666")
-              .text("S")
-              .attr("font-size","32");
+              .text("During wave")
+              .attr("font-size","20");
 
 var text_2 = svg_sb_2.append("text")
               .attr("text-anchor","middle")
               .style("fill","#666")
-              .text("2")
-              .attr("font-size","32");
+              .text("A day after")
+              .attr("font-size","20");
 
 var text_3 = svg_sb_3.append("text")
               .attr("text-anchor","middle")
               .style("fill","#666")
-              .text("3")
-              .attr("font-size","32");
+              .text("2 weeks after")
+              .attr("font-size","20");
 
 var partition = d3.layout.partition()
     .sort(null)
@@ -191,7 +191,7 @@ function mouseover(d){
 }
 
 function mouseleave(d){
-  text.text("1").attr("font-size","32");
+  text.text("Before waves").attr("font-size","20");
   d3.select(this).style("opacity", 1);
 }
 
@@ -205,7 +205,7 @@ function mouseover_s(d){
 }
 
 function mouseleave_s(d){
-  text_s.text("S").attr("font-size","32");
+  text_s.text("During wave").attr("font-size","20");
   d3.select(this).style("opacity", 1);
 }
 
@@ -219,7 +219,7 @@ function mouseover_2(d){
 }
 
 function mouseleave_2(d){
-  text_2.text("2").attr("font-size","32");
+  text_2.text("A day after").attr("font-size","20");
   d3.select(this).style("opacity", 1);
 }
 
@@ -233,7 +233,7 @@ function mouseover_3(d){
 }
 
 function mouseleave_3(d){
-  text_3.text("3").attr("font-size","32");;
+  text_3.text("2 weeks after").attr("font-size","20");;
   d3.select(this).style("opacity", 1);
 }
 
