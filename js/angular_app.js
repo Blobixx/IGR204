@@ -99,8 +99,8 @@ app.directive("globe", function() {
                 .attr('class', 'overlay')
                 .attr('d', path)
                 .on('click', function(d) {
-					d3.selectAll(".overlay").style("fill", "#0955CC");
-                    d3.select(this).style("fill", "green");
+					d3.selectAll(".overlay").style("fill", "#7AEBFF");
+                    d3.select(this).style("fill", "red");
 					
 					rotateToFocusOn(d);
 					
@@ -125,7 +125,7 @@ app.directive("globe", function() {
                     else if (d.properties.race==5)
                         {d3.select("#race").html("Race : Other ");}
                     
-					d3.select("#race_impact").html("Race Impact : Not importante");
+					d3.select("#race_impact").html("Race Impact : Not important");
 
                     if (d.properties.goal==1) 
                         {d3.select("#goal").html("Goal : Seemed like a fun night out");}

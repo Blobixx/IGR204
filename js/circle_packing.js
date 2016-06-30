@@ -12,14 +12,14 @@ var size = d3.scale.linear()
     .interpolate(d3.interpolateHcl);
 
 var pack = d3.layout.pack()
-    .padding(2)
+.padding(2)
     .size([diameter - margin, diameter - margin])
     .value(function(d) { return d.size; })
 
-var svg = d3.select("#circle_packing").append("svg")
+var svg_cp = d3.select("#circle_packing").append("svg")
     .attr("width", diameter)
     .attr("height", diameter)
-    .append("g")
+  .append("g")
     .attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
 
 d3.json("data/circle_packing.json", function(error, root) {
@@ -29,14 +29,14 @@ d3.json("data/circle_packing.json", function(error, root) {
       nodes = pack.nodes(root),
       view;
 
-  var circle = svg.selectAll("circle")
+  var circle = svg_cp.selectAll("circle")
       .data(nodes)
     .enter().append("circle")
       .attr("class", function(d) { return d.parent ? d.children ? "node" : "node node--leaf" : "node node--root"; })
       .style("fill", function(d) { return d.children ? color(d.depth) : null; })
       .on("click", function(d) { if (focus !== d) zoom2(d), d3.event.stopPropagation(); });
 
-  var text = svg.selectAll("text")
+  var text = svg_cp.selectAll("text")
       .data(nodes)
     .enter().append("text")
       .attr("class", "label")
@@ -45,7 +45,7 @@ d3.json("data/circle_packing.json", function(error, root) {
       .style("size", function(d) { return size(d.depth);})
       .text(function(d) { return d.name + "  " + d.size + " " + d.pourcentage ; });
 
-  var node = svg.selectAll("circle,text");
+  var node = svg_cp.selectAll("circle,text");
 
   d3.select("body")
       .on("click", function() { zoom2(root); });
@@ -62,8 +62,7 @@ d3.json("data/circle_packing.json", function(error, root) {
           return function(t) { zoom2To(i(t)); };
         });
 
-    transition.selectAll("text")
-      .filter(function(d) { return d.parent === focus || this.style.display === "inline"; })
+    transition.selectAll(".label")
         .style("fill-opacity", function(d) { return d.parent === focus ? 1 : 0; })
         .each("start", function(d) { if (d.parent === focus) this.style.display = "inline"; })
         .each("end", function(d) { if (d.parent !== focus) this.style.display = "none"; });

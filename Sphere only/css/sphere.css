@@ -1,0 +1,30 @@
+path {
+    fill: none;
+    stroke: black
+}
+
+.background {
+  fill: none;
+  stroke-width: .8px;
+  stroke: none;
+}
+
+.graticule {
+    stroke: none;
+    stroke-width: .5px;
+}
+
+.square {
+    cursor: pointer;
+}
+
+.square .land {
+    fill: #7AEBFF;
+    stroke: white;
+    stroke-width .3px;
+}
+
+.square .overlay {
+    fill: #7AEBFF;
+    fill-opacity: 0.2;
+}
