@@ -191,7 +191,7 @@ function mouseover(d){
 }
 
 function mouseleave(d){
-  text.text("Before waves").attr("font-size","20");
+  text.text("Before wave").attr("font-size","20");
   d3.select(this).style("opacity", 1);
 }
 
