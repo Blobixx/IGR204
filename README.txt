@@ -1,0 +1,3 @@
+- Our final project is in the folder 'Bootstrap Interface'.
+- In the 'Sphere Only' folder, you will find only the first design of our project. In the fully integrated version, we didn't manage to make this design work as well as it works when alone. This is due to script conflicts between the different designs that we didn't manage to solve in time.
+- The 'Mapping Generation' folder contains the script we have developped in order to map the sphere of our first design according to our dataset.

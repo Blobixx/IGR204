@@ -12,6 +12,7 @@ function save() {
     var iX = 0;
     var iY = 0;
     var stop = false;
+	var lastSquare = false;
 
     d3.csv("data/SpeedDatingMini.csv", function(error, data) {
         if (error) throw error;
@@ -66,12 +67,15 @@ function save() {
                     [bLx, bLy],
                     [tLx, tLy]
                 ];
-                coordinates.push(cell);
-                if (i == (l - 1)) { //On gère la dernière entrée
+				
+                //coordinates.push(cell);
+				
+                if ((i == (l - 1)) || lastSquare) { //On gère la dernière entrée
                     features += '{"type": "Feature", "properties": ' + propertiesObjString + ',"geometry": {"type": "Polygon","coordinates": [[[' + cell[0] + '],[' + cell[1] + '],[' + cell[2] + '],[' + cell[3] + '],[' + cell[4] + ']]]}}'
                 } else {
                     features += '{"type": "Feature", "properties": ' + propertiesObjString + ',"geometry": {"type": "Polygon","coordinates": [[[' + cell[0] + '],[' + cell[1] + '],[' + cell[2] + '],[' + cell[3] + '],[' + cell[4] + ']]]}},'
                 }
+				
                 //refresh cusror for cell
                 c.x = c.x + cellWidth;
 
@@ -84,6 +88,10 @@ function save() {
                     c.x = 0;
                     c.y = c.y - cellHeight;
                 }
+				if ((iY == countY + 2) && (iX == countX + 2)) {
+					lastSquare = true;
+					console.log("last square");
+				}
                 if (iY > countY + 2) {
                     console.log("done");
                     stop = true; //On sort de la boucle
